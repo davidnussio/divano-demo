@@ -24,3 +24,5 @@ The XMLTV guide (`divano-demo.xml.gz`) is announced in the playlist header and l
 
 The films play from archive.org, download.blender.org and Mux's public HLS test streams; the live
 channels loop Big Buck Bunny and Tears of Steel. Posters and backdrops are frames of the films.
+
+Privacy policy of the app: [davidnussio.github.io/divano-demo/privacy/](https://davidnussio.github.io/divano-demo/privacy/)
