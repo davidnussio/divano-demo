@@ -5,8 +5,9 @@
 #
 # Google doesn't publish this module and the prebuilt ones (Jellyfin, NextLib) are GPL-3.0. Built
 # here FFmpeg stays LGPL-2.1-or-later (no --enable-gpl, no --enable-nonfree) and only gets the
-# audio decoders a device may lack: Dolby (AC-3, E-AC-3, TrueHD/MLP), DTS and MPEG audio (MP2,
-# common in DVB channels). See third_party/README.md for what the licence asks of us.
+# audio decoders a device may lack: Dolby AC-3 and E-AC-3, and MPEG audio (MP2, common in DVB
+# channels). Their patents have expired; TrueHD/MLP and DTS are left out, theirs may not have (see
+# third_party/README.md, with what the licence asks of us).
 #
 # Run it again after bumping media3 in gradle/libs.versions.toml: until then the app doesn't
 # build, because the decoder must match Media3's version exactly.
@@ -23,7 +24,7 @@ ROOT=$(pwd)
 FFMPEG_VERSION=6.0.1  # Media3 recommends the 6.0 branch
 FFMPEG_SHA256=9b16b8731d78e596b4be0d720428ca42df642bb2d78342881ff7f5bc29fc9623
 NDK_VERSION=26.1.10909125  # the NDK Media3 tests the build with (r26b)
-DECODERS=(ac3 eac3 truehd mlp dca mp3)
+DECODERS=(ac3 eac3 mp3)
 # Where the exact source and this script are hosted next to our binaries, as FFmpeg's LGPL
 # checklist asks (the divano-demo repository): after a change of version, publish them there too.
 SOURCE_PAGE=https://davidnussio.github.io/divano-demo/ffmpeg/
