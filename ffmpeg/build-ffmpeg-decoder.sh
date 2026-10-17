@@ -24,6 +24,9 @@ FFMPEG_VERSION=6.0.1  # Media3 recommends the 6.0 branch
 FFMPEG_SHA256=9b16b8731d78e596b4be0d720428ca42df642bb2d78342881ff7f5bc29fc9623
 NDK_VERSION=26.1.10909125  # the NDK Media3 tests the build with (r26b)
 DECODERS=(ac3 eac3 truehd mlp dca mp3)
+# Where the exact source and this script are hosted next to our binaries, as FFmpeg's LGPL
+# checklist asks (the divano-demo repository): after a change of version, publish them there too.
+SOURCE_PAGE=https://davidnussio.github.io/divano-demo/ffmpeg/
 
 MEDIA3_VERSION=$(sed -n 's/^media3 = "\(.*\)"/\1/p' gradle/libs.versions.toml)
 MIN_SDK=$(sed -n 's/^minSdk = "\(.*\)"/\1/p' gradle/libs.versions.toml)
@@ -93,7 +96,7 @@ cat > "$OUT/decoder-ffmpeg-$MEDIA3_VERSION.pom" <<EOF
   <packaging>aar</packaging>
   <name>FFmpeg $FFMPEG_VERSION · Media3 decoder</name>
   <url>https://ffmpeg.org</url>
-  <description>FFmpeg $FFMPEG_VERSION audio decoders (${DECODERS[*]}) in the FFmpeg extension of Media3 $MEDIA3_VERSION. FFmpeg is licensed under the GNU LGPL version 2.1 or later. Its source code, unmodified: https://ffmpeg.org/releases/ffmpeg-$FFMPEG_VERSION.tar.xz, built with https://github.com/androidx/media/blob/$MEDIA3_VERSION/libraries/decoder_ffmpeg/src/main/jni/build_ffmpeg.sh</description>
+  <description>FFmpeg $FFMPEG_VERSION audio decoders (${DECODERS[*]}) in the FFmpeg extension of Media3 $MEDIA3_VERSION. FFmpeg is licensed under the GNU LGPL version 2.1 or later. Its source code, unmodified, and how it was built: ${SOURCE_PAGE} (source: ${SOURCE_PAGE}ffmpeg-$FFMPEG_VERSION.tar.xz).</description>
   <licenses>
     <license><name>Apache License 2.0</name><url>https://www.apache.org/licenses/LICENSE-2.0</url></license>
     <license><name>GNU Lesser General Public License v2.1 or later</name><url>https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html</url></license>
