@@ -26,3 +26,5 @@ The films play from archive.org, download.blender.org and Mux's public HLS test 
 channels loop Big Buck Bunny and Tears of Steel. Posters and backdrops are frames of the films.
 
 Privacy policy of the app: [davidnussio.github.io/divano-demo/privacy/](https://davidnussio.github.io/divano-demo/privacy/)
+
+FFmpeg used by the app (LGPL), its exact source and how it was built: [davidnussio.github.io/divano-demo/ffmpeg/](https://davidnussio.github.io/divano-demo/ffmpeg/)
