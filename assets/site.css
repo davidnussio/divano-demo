@@ -208,6 +208,7 @@ section.block + section.block { padding-top: 8px; }
 
 .shelf {
   display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter);
+  align-items: flex-start;
   padding: 6px var(--gutter) 22px; margin: 0 calc(-1 * var(--gutter));
   scrollbar-width: thin; scrollbar-color: var(--line) transparent;
 }
