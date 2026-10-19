@@ -1,7 +1,7 @@
 # Divano website and demo playlist
 
 The website of Divano, an IPTV player that comes without any content, served by GitHub Pages at
-[davidnussio.github.io/divano-demo](https://davidnussio.github.io/divano-demo/), and the demo
+[divano.dambox.ch](https://divano.dambox.ch/), and the demo
 playlist the app offers as "Try the demo".
 
 ## Pages
@@ -31,7 +31,7 @@ and regenerate the JSON: `yq -o=json sync/openapi.yaml > sync/openapi.json`.
 
 To try it, add this link as a source in the app:
 
-    https://davidnussio.github.io/divano-demo/divano-demo.m3u
+    https://divano.dambox.ch/divano-demo.m3u
 
 The XMLTV guide (`divano-demo.xml.gz`) is announced in the playlist header and loaded by itself.
 

@@ -1,95 +1,95 @@
-#EXTM3U url-tvg="https://davidnussio.github.io/divano-demo/divano-demo.xml.gz"
-#EXTINF:-1 tvg-id="larkspur-news.demo" tvg-name="Larkspur News" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/101.png" tvg-chno="1" group-title="News",Larkspur News
+#EXTM3U url-tvg="https://divano.dambox.ch/divano-demo.xml.gz"
+#EXTINF:-1 tvg-id="larkspur-news.demo" tvg-name="Larkspur News" tvg-logo="https://divano.dambox.ch/art/logos/101.png" tvg-chno="1" group-title="News",Larkspur News
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="quillfeather-24.demo" tvg-name="Quillfeather 24" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/102.png" tvg-chno="2" group-title="News",Quillfeather 24
+#EXTINF:-1 tvg-id="quillfeather-24.demo" tvg-name="Quillfeather 24" tvg-logo="https://divano.dambox.ch/art/logos/102.png" tvg-chno="2" group-title="News",Quillfeather 24
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="tidewater-report.demo" tvg-name="Tidewater Report" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/103.png" tvg-chno="3" group-title="News",Tidewater Report
+#EXTINF:-1 tvg-id="tidewater-report.demo" tvg-name="Tidewater Report" tvg-logo="https://divano.dambox.ch/art/logos/103.png" tvg-chno="3" group-title="News",Tidewater Report
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="copperline-news.demo" tvg-name="Copperline News" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/104.png" tvg-chno="4" group-title="News",Copperline News
+#EXTINF:-1 tvg-id="copperline-news.demo" tvg-name="Copperline News" tvg-logo="https://divano.dambox.ch/art/logos/104.png" tvg-chno="4" group-title="News",Copperline News
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="northwind-bulletin.demo" tvg-name="Northwind Bulletin" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/105.png" tvg-chno="5" group-title="News",Northwind Bulletin
+#EXTINF:-1 tvg-id="northwind-bulletin.demo" tvg-name="Northwind Bulletin" tvg-logo="https://divano.dambox.ch/art/logos/105.png" tvg-chno="5" group-title="News",Northwind Bulletin
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="cinevale.demo" tvg-name="Cinevale" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/106.png" tvg-chno="6" group-title="Movies",Cinevale
+#EXTINF:-1 tvg-id="cinevale.demo" tvg-name="Cinevale" tvg-logo="https://divano.dambox.ch/art/logos/106.png" tvg-chno="6" group-title="Movies",Cinevale
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="reel-harbor.demo" tvg-name="Reel Harbor" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/107.png" tvg-chno="7" group-title="Movies",Reel Harbor
+#EXTINF:-1 tvg-id="reel-harbor.demo" tvg-name="Reel Harbor" tvg-logo="https://divano.dambox.ch/art/logos/107.png" tvg-chno="7" group-title="Movies",Reel Harbor
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="velvet-screen.demo" tvg-name="Velvet Screen" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/108.png" tvg-chno="8" group-title="Movies",Velvet Screen
+#EXTINF:-1 tvg-id="velvet-screen.demo" tvg-name="Velvet Screen" tvg-logo="https://divano.dambox.ch/art/logos/108.png" tvg-chno="8" group-title="Movies",Velvet Screen
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="lanternlight-movies.demo" tvg-name="Lanternlight Movies" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/109.png" tvg-chno="9" group-title="Movies",Lanternlight Movies
+#EXTINF:-1 tvg-id="lanternlight-movies.demo" tvg-name="Lanternlight Movies" tvg-logo="https://divano.dambox.ch/art/logos/109.png" tvg-chno="9" group-title="Movies",Lanternlight Movies
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="silverfoot-cinema.demo" tvg-name="Silverfoot Cinema" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/110.png" tvg-chno="10" group-title="Movies",Silverfoot Cinema
+#EXTINF:-1 tvg-id="silverfoot-cinema.demo" tvg-name="Silverfoot Cinema" tvg-logo="https://divano.dambox.ch/art/logos/110.png" tvg-chno="10" group-title="Movies",Silverfoot Cinema
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="wildfern.demo" tvg-name="Wildfern" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/111.png" tvg-chno="11" group-title="Documentary",Wildfern
+#EXTINF:-1 tvg-id="wildfern.demo" tvg-name="Wildfern" tvg-logo="https://divano.dambox.ch/art/logos/111.png" tvg-chno="11" group-title="Documentary",Wildfern
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="deep-atlas.demo" tvg-name="Deep Atlas" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/112.png" tvg-chno="12" group-title="Documentary",Deep Atlas
+#EXTINF:-1 tvg-id="deep-atlas.demo" tvg-name="Deep Atlas" tvg-logo="https://divano.dambox.ch/art/logos/112.png" tvg-chno="12" group-title="Documentary",Deep Atlas
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="fernvale-nature.demo" tvg-name="Fernvale Nature" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/113.png" tvg-chno="13" group-title="Documentary",Fernvale Nature
+#EXTINF:-1 tvg-id="fernvale-nature.demo" tvg-name="Fernvale Nature" tvg-logo="https://divano.dambox.ch/art/logos/113.png" tvg-chno="13" group-title="Documentary",Fernvale Nature
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="clockwork-history.demo" tvg-name="Clockwork History" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/114.png" tvg-chno="14" group-title="Documentary",Clockwork History
+#EXTINF:-1 tvg-id="clockwork-history.demo" tvg-name="Clockwork History" tvg-logo="https://divano.dambox.ch/art/logos/114.png" tvg-chno="14" group-title="Documentary",Clockwork History
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="starfield-science.demo" tvg-name="Starfield Science" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/115.png" tvg-chno="15" group-title="Documentary",Starfield Science
+#EXTINF:-1 tvg-id="starfield-science.demo" tvg-name="Starfield Science" tvg-logo="https://divano.dambox.ch/art/logos/115.png" tvg-chno="15" group-title="Documentary",Starfield Science
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="brightwick-one.demo" tvg-name="Brightwick One" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/116.png" tvg-chno="16" group-title="Entertainment",Brightwick One
+#EXTINF:-1 tvg-id="brightwick-one.demo" tvg-name="Brightwick One" tvg-logo="https://divano.dambox.ch/art/logos/116.png" tvg-chno="16" group-title="Entertainment",Brightwick One
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="marigold-tv.demo" tvg-name="Marigold TV" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/117.png" tvg-chno="17" group-title="Entertainment",Marigold TV
+#EXTINF:-1 tvg-id="marigold-tv.demo" tvg-name="Marigold TV" tvg-logo="https://divano.dambox.ch/art/logos/117.png" tvg-chno="17" group-title="Entertainment",Marigold TV
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="quokka-tv.demo" tvg-name="Quokka TV" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/118.png" tvg-chno="18" group-title="Entertainment",Quokka TV
+#EXTINF:-1 tvg-id="quokka-tv.demo" tvg-name="Quokka TV" tvg-logo="https://divano.dambox.ch/art/logos/118.png" tvg-chno="18" group-title="Entertainment",Quokka TV
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="halcyon-six.demo" tvg-name="Halcyon Six" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/119.png" tvg-chno="19" group-title="Entertainment",Halcyon Six
+#EXTINF:-1 tvg-id="halcyon-six.demo" tvg-name="Halcyon Six" tvg-logo="https://divano.dambox.ch/art/logos/119.png" tvg-chno="19" group-title="Entertainment",Halcyon Six
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="paper-lantern.demo" tvg-name="Paper Lantern" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/120.png" tvg-chno="20" group-title="Entertainment",Paper Lantern
+#EXTINF:-1 tvg-id="paper-lantern.demo" tvg-name="Paper Lantern" tvg-logo="https://divano.dambox.ch/art/logos/120.png" tvg-chno="20" group-title="Entertainment",Paper Lantern
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="pebble-pals.demo" tvg-name="Pebble Pals" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/121.png" tvg-chno="21" group-title="Kids",Pebble Pals
+#EXTINF:-1 tvg-id="pebble-pals.demo" tvg-name="Pebble Pals" tvg-logo="https://divano.dambox.ch/art/logos/121.png" tvg-chno="21" group-title="Kids",Pebble Pals
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="tiny-rocket.demo" tvg-name="Tiny Rocket" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/122.png" tvg-chno="22" group-title="Kids",Tiny Rocket
+#EXTINF:-1 tvg-id="tiny-rocket.demo" tvg-name="Tiny Rocket" tvg-logo="https://divano.dambox.ch/art/logos/122.png" tvg-chno="22" group-title="Kids",Tiny Rocket
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="doodlebug-junior.demo" tvg-name="Doodlebug Junior" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/123.png" tvg-chno="23" group-title="Kids",Doodlebug Junior
+#EXTINF:-1 tvg-id="doodlebug-junior.demo" tvg-name="Doodlebug Junior" tvg-logo="https://divano.dambox.ch/art/logos/123.png" tvg-chno="23" group-title="Kids",Doodlebug Junior
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="kite-and-crayon.demo" tvg-name="Kite & Crayon" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/124.png" tvg-chno="24" group-title="Kids",Kite & Crayon
+#EXTINF:-1 tvg-id="kite-and-crayon.demo" tvg-name="Kite & Crayon" tvg-logo="https://divano.dambox.ch/art/logos/124.png" tvg-chno="24" group-title="Kids",Kite & Crayon
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="marble-kids.demo" tvg-name="Marble Kids" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/125.png" tvg-chno="25" group-title="Kids",Marble Kids
+#EXTINF:-1 tvg-id="marble-kids.demo" tvg-name="Marble Kids" tvg-logo="https://divano.dambox.ch/art/logos/125.png" tvg-chno="25" group-title="Kids",Marble Kids
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="tempolane.demo" tvg-name="Tempolane" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/126.png" tvg-chno="26" group-title="Music",Tempolane
+#EXTINF:-1 tvg-id="tempolane.demo" tvg-name="Tempolane" tvg-logo="https://divano.dambox.ch/art/logos/126.png" tvg-chno="26" group-title="Music",Tempolane
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="vinyl-bay.demo" tvg-name="Vinyl Bay" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/127.png" tvg-chno="27" group-title="Music",Vinyl Bay
+#EXTINF:-1 tvg-id="vinyl-bay.demo" tvg-name="Vinyl Bay" tvg-logo="https://divano.dambox.ch/art/logos/127.png" tvg-chno="27" group-title="Music",Vinyl Bay
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="neon-choir.demo" tvg-name="Neon Choir" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/128.png" tvg-chno="28" group-title="Music",Neon Choir
+#EXTINF:-1 tvg-id="neon-choir.demo" tvg-name="Neon Choir" tvg-logo="https://divano.dambox.ch/art/logos/128.png" tvg-chno="28" group-title="Music",Neon Choir
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="bassline-club.demo" tvg-name="Bassline Club" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/129.png" tvg-chno="29" group-title="Music",Bassline Club
+#EXTINF:-1 tvg-id="bassline-club.demo" tvg-name="Bassline Club" tvg-logo="https://divano.dambox.ch/art/logos/129.png" tvg-chno="29" group-title="Music",Bassline Club
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="amplify-loop.demo" tvg-name="Amplify Loop" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/130.png" tvg-chno="30" group-title="Music",Amplify Loop
+#EXTINF:-1 tvg-id="amplify-loop.demo" tvg-name="Amplify Loop" tvg-logo="https://divano.dambox.ch/art/logos/130.png" tvg-chno="30" group-title="Music",Amplify Loop
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="saffron-kitchen.demo" tvg-name="Saffron Kitchen" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/131.png" tvg-chno="31" group-title="Lifestyle",Saffron Kitchen
+#EXTINF:-1 tvg-id="saffron-kitchen.demo" tvg-name="Saffron Kitchen" tvg-logo="https://divano.dambox.ch/art/logos/131.png" tvg-chno="31" group-title="Lifestyle",Saffron Kitchen
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="atlas-roads.demo" tvg-name="Atlas Roads" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/132.png" tvg-chno="32" group-title="Lifestyle",Atlas Roads
+#EXTINF:-1 tvg-id="atlas-roads.demo" tvg-name="Atlas Roads" tvg-logo="https://divano.dambox.ch/art/logos/132.png" tvg-chno="32" group-title="Lifestyle",Atlas Roads
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="driftwood-living.demo" tvg-name="Driftwood Living" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/133.png" tvg-chno="33" group-title="Lifestyle",Driftwood Living
+#EXTINF:-1 tvg-id="driftwood-living.demo" tvg-name="Driftwood Living" tvg-logo="https://divano.dambox.ch/art/logos/133.png" tvg-chno="33" group-title="Lifestyle",Driftwood Living
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="rooftop-garden.demo" tvg-name="Rooftop Garden" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/134.png" tvg-chno="34" group-title="Lifestyle",Rooftop Garden
+#EXTINF:-1 tvg-id="rooftop-garden.demo" tvg-name="Rooftop Garden" tvg-logo="https://divano.dambox.ch/art/logos/134.png" tvg-chno="34" group-title="Lifestyle",Rooftop Garden
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="wanderbird-travel.demo" tvg-name="Wanderbird Travel" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/135.png" tvg-chno="35" group-title="Lifestyle",Wanderbird Travel
+#EXTINF:-1 tvg-id="wanderbird-travel.demo" tvg-name="Wanderbird Travel" tvg-logo="https://divano.dambox.ch/art/logos/135.png" tvg-chno="35" group-title="Lifestyle",Wanderbird Travel
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="pitchside-live.demo" tvg-name="Pitchside Live" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/136.png" tvg-chno="36" group-title="Sports",Pitchside Live
+#EXTINF:-1 tvg-id="pitchside-live.demo" tvg-name="Pitchside Live" tvg-logo="https://divano.dambox.ch/art/logos/136.png" tvg-chno="36" group-title="Sports",Pitchside Live
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="fastbreak-arena.demo" tvg-name="Fastbreak Arena" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/137.png" tvg-chno="37" group-title="Sports",Fastbreak Arena
+#EXTINF:-1 tvg-id="fastbreak-arena.demo" tvg-name="Fastbreak Arena" tvg-logo="https://divano.dambox.ch/art/logos/137.png" tvg-chno="37" group-title="Sports",Fastbreak Arena
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="ironpeak-sports.demo" tvg-name="Ironpeak Sports" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/138.png" tvg-chno="38" group-title="Sports",Ironpeak Sports
+#EXTINF:-1 tvg-id="ironpeak-sports.demo" tvg-name="Ironpeak Sports" tvg-logo="https://divano.dambox.ch/art/logos/138.png" tvg-chno="38" group-title="Sports",Ironpeak Sports
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-id="rally-point.demo" tvg-name="Rally Point" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/139.png" tvg-chno="39" group-title="Sports",Rally Point
+#EXTINF:-1 tvg-id="rally-point.demo" tvg-name="Rally Point" tvg-logo="https://divano.dambox.ch/art/logos/139.png" tvg-chno="39" group-title="Sports",Rally Point
 https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
-#EXTINF:-1 tvg-id="seabright-racing.demo" tvg-name="Seabright Racing" tvg-logo="https://davidnussio.github.io/divano-demo/art/logos/140.png" tvg-chno="40" group-title="Sports",Seabright Racing
+#EXTINF:-1 tvg-id="seabright-racing.demo" tvg-name="Seabright Racing" tvg-logo="https://divano.dambox.ch/art/logos/140.png" tvg-chno="40" group-title="Sports",Seabright Racing
 https://test-streams.mux.dev/tos_ismc/main.m3u8
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/bbb.jpg" group-title="Movies: Animation",Big Buck Bunny (2008)
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/bbb.jpg" group-title="Movies: Animation",Big Buck Bunny (2008)
 https://archive.org/download/BigBuckBunny_124/Content/big_buck_bunny_720p_surround.mp4
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/sintel.jpg" group-title="Movies: Fantasy",Sintel (2010)
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/sintel.jpg" group-title="Movies: Fantasy",Sintel (2010)
 https://archive.org/download/Sintel_201809/Sintel.MP4
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/tos.jpg" group-title="Movies: Science Fiction",Tears of Steel (2012)
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/tos.jpg" group-title="Movies: Science Fiction",Tears of Steel (2012)
 https://download.blender.org/demo/movies/ToS/tears_of_steel_720p.mov
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/ed.jpg" group-title="Movies: Science Fiction",Elephants Dream (2006)
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/ed.jpg" group-title="Movies: Science Fiction",Elephants Dream (2006)
 https://download.blender.org/ED/elephantsdream-720-h264-st-aac.mov
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E01 Llama Drama
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E01 Llama Drama
 https://archive.org/download/Caminandes1LlamaDrama/01_llama_drama_1080p.mp4
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E02 Gran Dillama
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E02 Gran Dillama
 https://archive.org/download/Caminandes2GranDillama/02_gran_dillama_1080p.mp4
-#EXTINF:-1 tvg-logo="https://davidnussio.github.io/divano-demo/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E03 Llamigos
+#EXTINF:-1 tvg-logo="https://divano.dambox.ch/art/posters/caminandes.jpg" group-title="Shorts: Caminandes",Caminandes S01E03 Llamigos
 https://archive.org/download/CaminandesLlamigos/Caminandes_%20Llamigos-1080p.mp4
