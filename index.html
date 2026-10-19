@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="it" data-title-it="Divano – Lettore IPTV per telefono e Android TV" data-title-en="Divano – IPTV player for phone and Android TV">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Divano – Lettore IPTV per telefono e Android TV</title>
+<meta name="description" content="Divano plays your M3U playlists, Xtream accounts and XMLTV guides on phones and Android TV. Divano riproduce le tue playlist M3U, gli account Xtream e le guide XMLTV su telefono e Android TV.">
+<meta name="theme-color" content="#070B14">
+<meta property="og:title" content="Divano – IPTV player">
+<meta property="og:description" content="TV, serie e film: sempre a portata di divano.">
+<meta property="og:image" content="https://davidnussio.github.io/divano-demo/assets/og.jpg">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="preload" href="assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="assets/site.css">
+<script>!function(){var d=document.documentElement,l=new URLSearchParams(location.search).get("lang");if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l}()</script>
+<script src="assets/site.js" defer></script>
+</head>
+<body>
+
+<aside class="rail">
+  <a class="brand" href="./" aria-label="Divano"><svg aria-hidden="true"><use href="assets/icons.svg#sofa"/></svg></a>
+  <nav aria-label="Menu">
+    <a class="tab" href="./" aria-current="page"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#home"/></svg><span class="tip"><span class="it">Home</span><span class="en">Home</span></span></a>
+    <a class="tab" href="guide/"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#book"/></svg><span class="tip"><span class="it">Guida</span><span class="en">Guide</span></span></a>
+    <a class="tab" href="sync/"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sync"/></svg><span class="tip"><span class="it">Server di sincronizzazione</span><span class="en">Sync server</span></span></a>
+    <a class="tab" href="privacy/"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"/></svg><span class="tip">Privacy</span></a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="lang" role="group" aria-label="Lingua / Language"><button data-set-lang="it" aria-pressed="true">IT</button><button data-set-lang="en" aria-pressed="false">EN</button></div>
+</aside>
+
+<header class="topbar">
+  <a class="brand" href="./"><svg aria-hidden="true"><use href="assets/icons.svg#sofa"/></svg>Divano</a>
+  <div class="lang" role="group" aria-label="Lingua / Language"><button data-set-lang="it" aria-pressed="true">IT</button><button data-set-lang="en" aria-pressed="false">EN</button></div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="backdrop" style="background-image: url('art/backdrops/caminandes.jpg')"></div>
+    <div class="wrap">
+      <h1 class="logo"><svg aria-hidden="true"><use href="assets/icons.svg#sofa"/></svg>Divano</h1>
+      <p class="tagline"><span class="it">TV, serie e film: sempre a portata di divano.</span><span class="en">Your TV, series and movies, always within reach of the sofa.</span></p>
+      <p class="lead">
+        <span class="it">Il lettore per le tue playlist M3U, i tuoi account Xtream e le guide XMLTV, sul telefono e su Android TV. Niente account, niente pubblicità, niente tracciamento.</span>
+        <span class="en">The player for your M3U playlists, Xtream accounts and XMLTV guides, on your phone and on Android TV. No account, no ads, no tracking.</span>
+      </p>
+      <div class="actions">
+        <a class="btn" href="guide/"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#play"/></svg><span class="it">Inizia dalla guida</span><span class="en">Start with the guide</span></a>
+        <a class="btn ghost" href="#demo"><span class="it">Prova la demo</span><span class="en">Try the demo</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="row-title">
+        <h2><span class="it">Sul telefono e sulla TV</span><span class="en">On your phone and on your TV</span></h2>
+        <div class="segmented" role="group" data-shelf-switch="shots" aria-label="Device">
+          <button data-device="tv" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#tv"/></svg>TV</button>
+          <button data-device="phone" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#phone"/></svg><span class="it">Telefono</span><span class="en">Phone</span></button>
+        </div>
+      </div>
+      <div class="shelf" id="shots">
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-01-home.webp" data-shot="assets/shots/*/tv-01-home.webp" alt=""><figcaption>Home<small><span class="it">Riprendi da dove eri</span><span class="en">Pick up where you left off</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-02-live.webp" data-shot="assets/shots/*/tv-02-live.webp" alt=""><figcaption><span class="it">TV in diretta</span><span class="en">Live TV</span><small><span class="it">Canali, loghi e cosa va in onda</span><span class="en">Channels, logos and what's on</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-03-guide.webp" data-shot="assets/shots/*/tv-03-guide.webp" alt=""><figcaption><span class="it">Guida TV</span><span class="en">TV guide</span><small><span class="it">La griglia dei programmi</span><span class="en">The programme grid</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-04-movie.webp" data-shot="assets/shots/*/tv-04-movie.webp" alt=""><figcaption><span class="it">Film</span><span class="en">Movies</span><small><span class="it">Trama, anno, genere e cast</span><span class="en">Plot, year, genre and cast</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-05-series.webp" data-shot="assets/shots/*/tv-05-series.webp" alt=""><figcaption><span class="it">Serie</span><span class="en">Series</span><small><span class="it">Stagioni ed episodi visti</span><span class="en">Seasons and watched episodes</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-06-qr-setup.webp" data-shot="assets/shots/*/tv-06-qr-setup.webp" alt=""><figcaption><span class="it">Configura dal telefono</span><span class="en">Set up from your phone</span><small><span class="it">Un codice QR, niente telecomando</span><span class="en">A QR code, no remote typing</span></small></figcaption></figure>
+        <figure class="shot tv" data-device="tv"><img loading="lazy" width="1280" height="720" src="assets/shots/it/tv-07-player.webp" data-shot="assets/shots/*/tv-07-player.webp" alt=""><figcaption>Player<small><span class="it">Ora e dopo, pausa e replay</span><span class="en">Now and next, pause and replay</span></small></figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-01-home.webp" data-shot="assets/shots/*/phone-01-home.webp" alt=""><figcaption>Home</figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-02-live.webp" data-shot="assets/shots/*/phone-02-live.webp" alt=""><figcaption><span class="it">TV in diretta</span><span class="en">Live TV</span></figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-03-guide.webp" data-shot="assets/shots/*/phone-03-guide.webp" alt=""><figcaption><span class="it">Guida TV</span><span class="en">TV guide</span></figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-04-movie.webp" data-shot="assets/shots/*/phone-04-movie.webp" alt=""><figcaption><span class="it">Film</span><span class="en">Movies</span></figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-05-series.webp" data-shot="assets/shots/*/phone-05-series.webp" alt=""><figcaption><span class="it">Serie</span><span class="en">Series</span></figcaption></figure>
+        <figure class="shot phone" data-device="phone" hidden><img loading="lazy" width="540" height="960" src="assets/shots/it/phone-06-player.webp" data-shot="assets/shots/*/phone-06-player.webp" alt=""><figcaption>Player</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="row-title"><h2><span class="it">Cosa fa</span><span class="en">What it does</span></h2></div>
+      <div class="grid">
+        <div class="card">
+          <div class="glyph warm"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#tv"/></svg></div>
+          <h3><span class="it">Comodo sul divano</span><span class="en">Made for the sofa</span></h3>
+          <p class="it">Pensato per il telecomando su Android TV e Google TV e per il tocco sul telefono. Configuri la TV dal telefono con un codice QR, e "Continua a guardare" compare anche nella home di Google TV.</p>
+          <p class="en">Built for the remote on Android TV and Google TV and for touch on phones. Set up the TV from your phone with a QR code, and "Continue watching" shows up on the Google TV home screen too.</p>
+        </div>
+        <div class="card">
+          <div class="glyph"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#guide"/></svg></div>
+          <h3><span class="it">TV in diretta</span><span class="en">Live TV</span></h3>
+          <p class="it">Guida TV a griglia, preferiti e categorie. Metti in pausa la diretta, rivedi i programmi passati se la sorgente lo permette, ricevi un promemoria prima che inizi un programma.</p>
+          <p class="en">A grid TV guide, favorites and categories. Pause live TV, replay past programmes when your source allows it, get a reminder before a programme starts.</p>
+        </div>
+        <div class="card">
+          <div class="glyph"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#movie"/></svg></div>
+          <h3><span class="it">Film e serie</span><span class="en">Movies and series</span></h3>
+          <p class="it">Schede con trama e cast, ripresa da dove eri, episodio successivo automatico, versioni doppie raggruppate e download per guardare offline.</p>
+          <p class="en">Pages with plot and cast, resume where you left off, next episode automatically, duplicate versions grouped together and downloads to watch offline.</p>
+        </div>
+        <div class="card">
+          <div class="glyph"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#search"/></svg></div>
+          <h3><span class="it">Ricerca e ordine</span><span class="en">Search and order</span></h3>
+          <p class="it">Ricerca istantanea su canali, film e serie. Rinomina o nascondi canali, scegli le categorie da mostrare, usa più playlist insieme.</p>
+          <p class="en">Instant search across channels, movies and series. Rename or hide channels, pick the categories to show, use several playlists at once.</p>
+        </div>
+        <div class="card">
+          <div class="glyph green"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#people"/></svg></div>
+          <h3><span class="it">Profili e famiglia</span><span class="en">Profiles and family</span></h3>
+          <p class="it">Un profilo per ognuno, con preferiti, lista e cronologia propri. Il controllo parentale con PIN nasconde le categorie che blocchi; quelle per adulti si bloccano da sole.</p>
+          <p class="en">A profile for everyone, with their own favorites, list and history. Parental control with a PIN hides the categories you lock; adult ones lock by themselves.</p>
+        </div>
+        <div class="card">
+          <div class="glyph green"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sync"/></svg></div>
+          <h3><span class="it">Sincronizzazione cifrata</span><span class="en">Encrypted sync</span></h3>
+          <p class="it">Telefono e TV condividono profili, preferiti, progressi e sorgenti, cifrati sul dispositivo: il server non può leggerli. Puoi usare anche un server tuo.</p>
+          <p class="en">Phone and TV share profiles, favorites, progress and sources, encrypted on the device: the server cannot read them. You can use a server of your own too.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="demo">
+    <div class="wrap">
+      <div class="feature">
+        <div class="text">
+          <span class="badge"><span class="it">Playlist di prova</span><span class="en">Test playlist</span></span>
+          <h2 style="margin-top:14px"><span class="it">Prova Divano con la demo</span><span class="en">Try Divano with the demo</span></h2>
+          <p class="it muted">Divano è un lettore e non contiene canali. Per provarlo c'è una playlist legale: 40 canali inventati con guida TV e film del Blender Foundation in Creative Commons. Nell'app tocca <span class="ui">Prova la demo</span> quando aggiungi una sorgente, oppure incolla questo link:</p>
+          <p class="en muted">Divano is a player and comes without channels. To try it there's a legal playlist: 40 invented channels with a TV guide and Creative Commons films by the Blender Foundation. In the app, tap <span class="ui">Try the demo</span> when adding a source, or paste this link:</p>
+          <div class="copy-field">
+            <code>https://davidnussio.github.io/divano-demo/divano-demo.m3u</code>
+            <button type="button" data-copy="https://davidnussio.github.io/divano-demo/divano-demo.m3u"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#copy"/></svg><span class="it">Copia</span><span class="en">Copy</span></button>
+          </div>
+          <p class="muted" style="font-size:15px"><span class="it">La guida XMLTV (<a href="divano-demo.xml.gz">divano-demo.xml.gz</a>) è annunciata nella playlist e si carica da sola.</span><span class="en">The XMLTV guide (<a href="divano-demo.xml.gz">divano-demo.xml.gz</a>) is announced in the playlist and loads by itself.</span></p>
+        </div>
+        <div class="art" style="background-image: url('art/backdrops/sintel.jpg')"></div>
+      </div>
+
+      <h3><span class="it">Crediti dei film</span><span class="en">Film credits</span></h3>
+      <div class="table">
+        <table>
+          <thead><tr><th><span class="it">Titolo</span><span class="en">Title</span></th><th><span class="it">Anno</span><span class="en">Year</span></th><th><span class="it">Licenza</span><span class="en">Licence</span></th><th><span class="it">Crediti</span><span class="en">Credit</span></th></tr></thead>
+          <tbody>
+            <tr><td>Big Buck Bunny</td><td>2008</td><td>CC BY 3.0</td><td>© Blender Foundation, peach.blender.org</td></tr>
+            <tr><td>Elephants Dream</td><td>2006</td><td>CC BY 2.5</td><td>© Blender Foundation, orange.blender.org</td></tr>
+            <tr><td>Sintel</td><td>2010</td><td>CC BY 3.0</td><td>© Blender Foundation, durian.blender.org</td></tr>
+            <tr><td>Tears of Steel</td><td>2012</td><td>CC BY 3.0</td><td>© Blender Foundation, mango.blender.org</td></tr>
+            <tr><td>Caminandes 1–3</td><td>2013–2016</td><td>CC BY 3.0</td><td>© Blender Foundation, caminandes.com</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="muted" style="font-size:15px">
+        <span class="it">I film vengono riprodotti da archive.org, download.blender.org e dai flussi HLS di prova pubblici di Mux; i canali in diretta ripetono Big Buck Bunny e Tears of Steel. Locandine e sfondi sono fotogrammi dei film.</span>
+        <span class="en">The films play from archive.org, download.blender.org and Mux's public HLS test streams; the live channels loop Big Buck Bunny and Tears of Steel. Posters and backdrops are frames of the films.</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="grid">
+        <a class="card" href="guide/">
+          <div class="glyph"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#book"/></svg></div>
+          <h3><span class="it">Guida all'uso</span><span class="en">User guide</span></h3>
+          <p class="it">Dalla prima playlist alla pausa della diretta, ai profili e alla sincronizzazione, passo per passo.</p>
+          <p class="en">From the first playlist to pausing live TV, profiles and sync, step by step.</p>
+        </a>
+        <a class="card" href="sync/">
+          <div class="glyph green"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#server"/></svg></div>
+          <h3><span class="it">Un server di sincronizzazione tuo</span><span class="en">A sync server of your own</span></h3>
+          <p class="it">La specifica OpenAPI del protocollo di sincronizzazione, per chi vuole ospitarlo da sé.</p>
+          <p class="en">The OpenAPI specification of the sync protocol, for anyone who wants to host it themselves.</p>
+        </a>
+        <a class="card" href="privacy/">
+          <div class="glyph warm"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"/></svg></div>
+          <h3><span class="it">Informativa sulla privacy</span><span class="en">Privacy policy</span></h3>
+          <p class="it">Quali dati restano sul dispositivo, cosa passa dal server di sincronizzazione e cosa no.</p>
+          <p class="en">What stays on the device, what goes through the sync server and what doesn't.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="cols">
+        <div class="brandline"><svg aria-hidden="true"><use href="assets/icons.svg#sofa"/></svg>Divano</div>
+        <nav aria-label="Footer">
+          <a href="guide/"><span class="it">Guida</span><span class="en">Guide</span></a>
+          <a href="sync/"><span class="it">Server di sincronizzazione</span><span class="en">Sync server</span></a>
+          <a href="privacy/">Privacy</a>
+          <a href="ffmpeg/">FFmpeg (LGPL)</a>
+          <a href="mailto:app+divano@dambox.ch">app+divano@dambox.ch</a>
+        </nav>
+      </div>
+      <p class="fine">
+        <span class="it">Divano è un lettore: non contiene e non fornisce canali, film, serie o abbonamenti. Usa solo contenuti che hai il diritto di guardare.</span>
+        <span class="en">Divano is a player: it does not include or provide any channels, movies, series or subscriptions. Only play content you have the right to watch.</span>
+        <span class="it">Carattere Nunito (<a href="assets/NUNITO_OFL.txt">SIL Open Font License</a>), icone Material (Apache 2.0).</span>
+        <span class="en">Nunito typeface (<a href="assets/NUNITO_OFL.txt">SIL Open Font License</a>), Material icons (Apache 2.0).</span>
+      </p>
+    </div>
+  </footer>
+</main>
+
+<nav class="tabbar" aria-label="Menu">
+  <a href="./" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#home"/></svg></span>Home</a>
+  <a href="guide/"><span class="pill"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#book"/></svg></span><span class="it">Guida</span><span class="en">Guide</span></a>
+  <a href="sync/"><span class="pill"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#sync"/></svg></span>Sync</a>
+  <a href="privacy/"><span class="pill"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#shield"/></svg></span>Privacy</a>
+</nav>
+</body>
+</html>

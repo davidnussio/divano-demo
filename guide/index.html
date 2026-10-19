@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="it" data-title-it="Guida all'uso – Divano" data-title-en="User guide – Divano">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guida all'uso – Divano</title>
+<meta name="description" content="Come usare Divano su telefono e Android TV: sorgenti, guida TV, pausa della diretta, film e serie, profili, sincronizzazione. How to use Divano on phones and Android TV.">
+<meta name="theme-color" content="#070B14">
+<link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="preload" href="../assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../assets/site.css">
+<script>!function(){var d=document.documentElement,l=new URLSearchParams(location.search).get("lang");if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l}()</script>
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+
+<aside class="rail">
+  <a class="brand" href="../" aria-label="Divano"><svg aria-hidden="true"><use href="../assets/icons.svg#sofa"/></svg></a>
+  <nav aria-label="Menu">
+    <a class="tab" href="../"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg><span class="tip">Home</span></a>
+    <a class="tab" href="./" aria-current="page"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#book"/></svg><span class="tip"><span class="it">Guida</span><span class="en">Guide</span></span></a>
+    <a class="tab" href="../sync/"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg><span class="tip"><span class="it">Server di sincronizzazione</span><span class="en">Sync server</span></span></a>
+    <a class="tab" href="../privacy/"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg><span class="tip">Privacy</span></a>
+  </nav>
+  <div class="spacer"></div>
+  <div class="lang" role="group" aria-label="Lingua / Language"><button data-set-lang="it" aria-pressed="true">IT</button><button data-set-lang="en" aria-pressed="false">EN</button></div>
+</aside>
+
+<header class="topbar">
+  <a class="brand" href="../"><svg aria-hidden="true"><use href="../assets/icons.svg#sofa"/></svg>Divano</a>
+  <div class="lang" role="group" aria-label="Lingua / Language"><button data-set-lang="it" aria-pressed="true">IT</button><button data-set-lang="en" aria-pressed="false">EN</button></div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="icon-badge"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#book"/></svg></div>
+      <h1><span class="it">Guida all'uso</span><span class="en">User guide</span></h1>
+      <p class="it">Tutto quello che serve per usare Divano sul telefono e su Android TV, dalla prima playlist alla sincronizzazione tra dispositivi. I nomi dei pulsanti sono quelli che vedi nell'app.</p>
+      <p class="en">Everything you need to use Divano on your phone and on Android TV, from the first playlist to sync between devices. Button names are the ones you see in the app.</p>
+    </div>
+  </section>
+
+  <div class="wrap doc">
+    <nav class="toc" aria-label="Indice / Contents">
+      <p><span class="it">In questa guida</span><span class="en">In this guide</span></p>
+      <ol>
+        <li><a href="#start"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg><span class="it">Primi passi</span><span class="en">Getting started</span></a></li>
+        <li><a href="#phone-setup"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#qr"/></svg><span class="it">TV dal telefono</span><span class="en">TV from your phone</span></a></li>
+        <li><a href="#navigation"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg><span class="it">Muoversi nell'app</span><span class="en">Finding your way</span></a></li>
+        <li><a href="#live"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg><span class="it">TV in diretta</span><span class="en">Live TV</span></a></li>
+        <li><a href="#epg"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#guide"/></svg><span class="it">Guida TV e replay</span><span class="en">TV guide and replay</span></a></li>
+        <li><a href="#pause"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#pause"/></svg><span class="it">Pausa della diretta</span><span class="en">Pausing live TV</span></a></li>
+        <li><a href="#vod"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#movie"/></svg><span class="it">Film e serie</span><span class="en">Movies and series</span></a></li>
+        <li><a href="#downloads"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg><span class="it">Download</span><span class="en">Downloads</span></a></li>
+        <li><a href="#profiles"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#people"/></svg><span class="it">Profili</span><span class="en">Profiles</span></a></li>
+        <li><a href="#parental"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg><span class="it">Controllo parentale</span><span class="en">Parental control</span></a></li>
+        <li><a href="#sync"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg><span class="it">Sincronizzazione</span><span class="en">Sync</span></a></li>
+        <li><a href="#sources"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tune"/></svg><span class="it">Gestire le sorgenti</span><span class="en">Managing sources</span></a></li>
+        <li><a href="#backup"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#backup"/></svg><span class="it">Backup</span><span class="en">Backup</span></a></li>
+        <li><a href="#problems"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><span class="it">Se qualcosa non va</span><span class="en">When something's wrong</span></a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <!-- 1 -->
+      <section id="start">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg></span>Primi passi</h2>
+          <p>Divano è un lettore: non contiene canali. Ti serve una sorgente tua, cioè un link M3U o un account Xtream del tuo fornitore. Al primo avvio la Home ti accoglie con <span class="ui">Aggiungi playlist</span>.</p>
+          <ol class="steps">
+            <li>Tocca <span class="ui">Aggiungi playlist</span>. Si apre <strong>Aggiungi una sorgente</strong>.</li>
+            <li>Scegli come inserirla:
+              <ul>
+                <li><span class="ui">Link</span>: incolla il link della playlist M3U. Se è un link Xtream (anche quello di uno stream), Divano riconosce l'account da solo e importa anche film e serie.</li>
+                <li><span class="ui">Login Xtream</span>: server (per esempio <code>http://esempio.com:8080</code>), nome utente e password.</li>
+                <li><span class="ui">File</span>: <span class="ui">Scegli file M3U</span> per una playlist salvata sul dispositivo.</li>
+              </ul>
+            </li>
+            <li>Se vuoi, dai un nome alla sorgente, poi tocca <span class="ui">Salva e importa</span>.</li>
+            <li>Divano scarica canali, film, serie e guida TV. Alla fine vedi <em>Importati … elementi. Buona visione!</em></li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p><strong>Vuoi solo provare?</strong> Finché non hai sorgenti, la schermata offre <span class="ui">Prova la demo</span>: una playlist con canali inventati, guida TV e film liberi del Blender Foundation. Puoi eliminarla quando vuoi da Impostazioni › Sorgenti.</p></div>
+          <p>Le password restano cifrate sul dispositivo e non serve nessun account. Puoi aggiungere più sorgenti: canali, film e serie compaiono insieme.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#play"/></svg></span>Getting started</h2>
+          <p>Divano is a player: it comes without channels. You need a source of your own, that is an M3U link or an Xtream account from your provider. On first launch, Home greets you with <span class="ui">Add playlist</span>.</p>
+          <ol class="steps">
+            <li>Tap <span class="ui">Add playlist</span>. <strong>Add a source</strong> opens.</li>
+            <li>Choose how to enter it:
+              <ul>
+                <li><span class="ui">Link</span>: paste the M3U playlist link. If it's an Xtream link (even a single stream's), Divano recognises the account and imports movies and series too.</li>
+                <li><span class="ui">Xtream login</span>: server (for example <code>http://example.com:8080</code>), username and password.</li>
+                <li><span class="ui">File</span>: <span class="ui">Choose M3U file</span> for a playlist saved on the device.</li>
+              </ul>
+            </li>
+            <li>Give the source a name if you like, then tap <span class="ui">Save and import</span>.</li>
+            <li>Divano downloads channels, movies, series and the TV guide. At the end you see <em>Imported … items. Enjoy!</em></li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p><strong>Just want to try it?</strong> Until you have a source, the screen offers <span class="ui">Try the demo</span>: a playlist with invented channels, a TV guide and free films by the Blender Foundation. You can delete it any time from Settings › Sources.</p></div>
+          <p>Passwords stay encrypted on the device and no account is needed. You can add several sources: their channels, movies and series show up together.</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section id="phone-setup">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#qr"/></svg></span>Configurare la TV dal telefono</h2>
+          <div class="platforms"><span class="badge tv"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg>Android TV</span></div>
+          <p>Scrivere un link lungo con il telecomando è scomodo. Sulla TV, la schermata <strong>Aggiungi una sorgente</strong> mostra il riquadro <em>Più comodo dal telefono</em> con un codice QR.</p>
+          <ol class="steps">
+            <li>Con il telefono sulla stessa rete Wi-Fi della TV, inquadra il codice con la fotocamera.</li>
+            <li>Si apre la pagina <strong>Aggiungi una sorgente alla TV</strong>: incolla il link, oppure apri <em>Oppure accedi con utente e password Xtream</em>.</li>
+            <li>Tocca <span class="ui">Invia alla TV</span>. Sulla TV parte l'importazione e puoi chiudere la pagina.</li>
+          </ol>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-06-qr-setup.webp" data-shot="../assets/shots/*/tv-06-qr-setup.webp" alt="La schermata Aggiungi una sorgente sulla TV, con il codice QR"><figcaption>Il codice QR resta valido finché la schermata è aperta.</figcaption></figure>
+          <p>La pagina è servita dalla TV stessa, sulla rete di casa, e si chiude quando esci dalla schermata. Dal telefono non si possono inviare file.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#qr"/></svg></span>Setting up the TV from your phone</h2>
+          <div class="platforms"><span class="badge tv"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg>Android TV</span></div>
+          <p>Typing a long link with the remote is no fun. On the TV, the <strong>Add a source</strong> screen shows the <em>Easier from your phone</em> panel with a QR code.</p>
+          <ol class="steps">
+            <li>With your phone on the same Wi-Fi as the TV, scan the code with the camera.</li>
+            <li>The <strong>Add a source to your TV</strong> page opens: paste the link, or open <em>Or sign in with Xtream username and password</em>.</li>
+            <li>Tap <span class="ui">Send to TV</span>. The TV starts importing and you can close the page.</li>
+          </ol>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-06-qr-setup.webp" data-shot="../assets/shots/*/tv-06-qr-setup.webp" alt="The Add a source screen on the TV, with the QR code"><figcaption>The QR code works for as long as the screen is open.</figcaption></figure>
+          <p>The page is served by the TV itself, on your home network, and closes when you leave the screen. Files can't be sent from the phone.</p>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section id="navigation">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg></span>Muoversi nell'app</h2>
+          <div class="platforms"><span class="badge phone"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg>Telefono</span><span class="badge tv"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg>TV</span></div>
+          <ul>
+            <li><strong>Sul telefono</strong> la barra in basso porta a Home, TV, Serie TV, Film e Libreria. In cima alla Home trovi Cerca, Impostazioni e i Profili. La <strong>Guida TV</strong> si apre dalla schermata TV in diretta.</li>
+            <li><strong>Sulla TV</strong> il menu a sinistra contiene, dall'alto: il profilo in uso, Cerca, Home, TV, Guida TV, Serie TV, Film, Libreria e Impostazioni.</li>
+          </ul>
+          <p><strong>Home</strong> raccoglie la registrazione in corso, <em>Continua a guardare</em> (con il prossimo episodio delle serie), i canali visti di recente, i preferiti e i titoli più votati. Su Google TV, <em>Continua a guardare</em> compare anche nella home del sistema.</p>
+          <p><strong>Libreria</strong> ha quattro schede: <span class="ui">Preferiti</span>, <span class="ui">Da vedere</span>, <span class="ui">Visti</span> e <span class="ui">Scaricati</span>.</p>
+          <p><strong>Cerca</strong> trova canali, film e serie mentre scrivi, anche con l'inizio delle parole: "film az" trova "Film d'azione". Puoi filtrare per tipo o cercare con la voce.</p>
+          <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-01-home.webp" data-shot="../assets/shots/*/phone-01-home.webp" alt="La Home sul telefono"></figure>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg></span>Finding your way</h2>
+          <div class="platforms"><span class="badge phone"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg>Phone</span><span class="badge tv"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg>TV</span></div>
+          <ul>
+            <li><strong>On a phone</strong> the bottom bar leads to Home, TV, Series, Movies and Library. Search, Settings and Profiles are at the top of Home. The <strong>TV guide</strong> opens from the Live TV screen.</li>
+            <li><strong>On a TV</strong> the menu on the left holds, from the top: the current profile, Search, Home, TV, TV guide, Series, Movies, Library and Settings.</li>
+          </ul>
+          <p><strong>Home</strong> gathers the recording in progress, <em>Continue watching</em> (with the next episode of your series), recently watched channels, favorites and top rated titles. On Google TV, <em>Continue watching</em> also shows up on the system's home screen.</p>
+          <p><strong>Library</strong> has four tabs: <span class="ui">Favourites</span>, <span class="ui">To watch</span>, <span class="ui">Watched</span> and <span class="ui">Downloads</span>.</p>
+          <p><strong>Search</strong> finds channels, movies and series as you type, even from the start of words: "act mov" finds "Action movies". You can filter by type or search by voice.</p>
+          <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-01-home.webp" data-shot="../assets/shots/*/phone-01-home.webp" alt="Home on a phone"></figure>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section id="live">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg></span>TV in diretta</h2>
+          <p>La lista dei canali mostra numero, logo e programma in onda. Usa <span class="ui">Preferiti</span> e <span class="ui">Tutti</span> per passare dai preferiti a tutti i canali, e <span class="ui">Filtri</span> per scegliere le categorie.</p>
+          <h3>Il menu di un canale</h3>
+          <p>Tieni premuto su un canale (sulla TV: tieni premuto <strong>OK</strong>) per:</p>
+          <ul>
+            <li><span class="ui">Info canale</span>: programmazione di oggi e domani, una breve descrizione da Wikipedia e le <span class="ui">Altre versioni</span> dello stesso canale.</li>
+            <li><span class="ui">Aggiungi ai preferiti</span> o <span class="ui">Rimuovi dai preferiti</span>.</li>
+            <li><span class="ui">Rinomina</span>: lascia vuoto per tornare al nome del fornitore.</li>
+            <li><span class="ui">Nascondi canale</span>: lo ritrovi in Impostazioni › Elementi nascosti.</li>
+          </ul>
+          <h3>Nel player</h3>
+          <ul>
+            <li>In basso vedi cosa va in onda, quando finisce e cosa viene <em>dopo</em>.</li>
+            <li><span class="ui">Audio e sottotitoli</span> sceglie la traccia audio e i sottotitoli.</li>
+            <li>Sul telecomando: tasti numerici per il numero del canale, CH+ e CH− per cambiare, il tasto dell'ultimo canale per tornare indietro.</li>
+            <li><span class="ui">Modalità zapping</span>: mentre è attiva, quello che guardi non finisce nella cronologia.</li>
+          </ul>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Se un canale non risponde, Divano passa da solo a un'altra copia dello stesso canale, anche di un'altra sorgente, e te lo dice: <em>Questo stream non funziona, passo a …</em></p></div>
+          <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-02-live.webp" data-shot="../assets/shots/*/phone-02-live.webp" alt="La lista dei canali sul telefono"></figure>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tv"/></svg></span>Live TV</h2>
+          <p>The channel list shows number, logo and what's on. Use <span class="ui">Favorites</span> and <span class="ui">All</span> to switch between your favorites and every channel, and <span class="ui">Filters</span> to pick categories.</p>
+          <h3>A channel's menu</h3>
+          <p>Long-press a channel (on a TV: hold <strong>OK</strong>) for:</p>
+          <ul>
+            <li><span class="ui">Channel info</span>: today's and tomorrow's schedule, a short description from Wikipedia and the <span class="ui">Other versions</span> of the same channel.</li>
+            <li><span class="ui">Add to favorites</span> or <span class="ui">Remove from favorites</span>.</li>
+            <li><span class="ui">Rename</span>: leave it empty to go back to the provider's name.</li>
+            <li><span class="ui">Hide channel</span>: you'll find it again in Settings › Hidden items.</li>
+          </ul>
+          <h3>In the player</h3>
+          <ul>
+            <li>At the bottom you see what's on, when it ends and what's <em>next</em>.</li>
+            <li><span class="ui">Audio and subtitles</span> picks the audio track and subtitles.</li>
+            <li>On the remote: number keys for the channel number, CH+ and CH− to switch, the last-channel key to go back.</li>
+            <li><span class="ui">Zapping mode</span>: while it's on, what you watch stays out of your history.</li>
+          </ul>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>When a channel doesn't answer, Divano switches by itself to another copy of the same channel, even from another source, and tells you: <em>This stream isn't working: switched to …</em></p></div>
+          <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-02-live.webp" data-shot="../assets/shots/*/phone-02-live.webp" alt="The channel list on a phone"></figure>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section id="epg">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#guide"/></svg></span>Guida TV, replay e promemoria</h2>
+          <p>La <strong>Guida TV</strong> è una griglia di canali e orari. Gli account Xtream la portano con sé; le playlist M3U spesso la annunciano nell'intestazione. Altrimenti aggiungi il link XMLTV in Impostazioni › Sorgenti › <span class="ui">Guida TV</span>.</p>
+          <ul>
+            <li><strong>Un programma in onda</strong>: lo selezioni e guardi il canale.</li>
+            <li><strong>Un programma passato</strong>: parte il <strong>replay</strong>, se la sorgente conserva l'archivio di quel canale. Nella scheda del canale vedi per quanti giorni (<em>Replay 3 giorni</em>). Nel player, <span class="ui">Dall'inizio</span> riavvolge il programma in corso.</li>
+            <li><strong>Un programma futuro</strong>: scegli <span class="ui">Ricordamelo</span>. Pochi minuti prima arriva una notifica, <em>Sta per iniziare</em>; toccala per guardare. Su Android 13 e successivi l'app chiede il permesso per le notifiche.</li>
+          </ul>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-03-guide.webp" data-shot="../assets/shots/*/tv-03-guide.webp" alt="La guida TV a griglia sulla TV"></figure>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#guide"/></svg></span>TV guide, replay and reminders</h2>
+          <p>The <strong>TV guide</strong> is a grid of channels and times. Xtream accounts bring their own; M3U playlists often announce it in their header. Otherwise add the XMLTV link in Settings › Sources › <span class="ui">TV guide</span>.</p>
+          <ul>
+            <li><strong>A programme on air</strong>: select it and watch the channel.</li>
+            <li><strong>A past programme</strong>: <strong>replay</strong> starts, if your source keeps an archive for that channel. The channel page tells you how many days (<em>Replay 3 days</em>). In the player, <span class="ui">Start over</span> rewinds the programme on air.</li>
+            <li><strong>A future programme</strong>: choose <span class="ui">Remind me</span>. A few minutes before it starts you get a notification, <em>Starting soon</em>; tap it to watch. On Android 13 and later the app asks for permission to send notifications.</li>
+          </ul>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-03-guide.webp" data-shot="../assets/shots/*/tv-03-guide.webp" alt="The grid TV guide on a TV"></figure>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section id="pause">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#pause"/></svg></span>Mettere in pausa la diretta</h2>
+          <p>Premi pausa su un canale: Divano inizia a registrarlo sul dispositivo e, quando riprendi, riparte da dove eri.</p>
+          <ul>
+            <li>La registrazione continua anche se cambi canale o chiudi l'app, fino alla fine del programma più mezz'ora (tre ore se il canale non ha guida). La ritrovi in Home, nella riga <strong>Registrazione</strong>, con <span class="ui">Interrompi</span> ed <span class="ui">Elimina</span>.</li>
+            <li>Arrivato alla fine della registrazione torni in diretta; <span class="ui">Diretta</span> ci torna subito.</li>
+            <li>Si registra un canale alla volta: mettendone in pausa un altro, Divano chiede se sostituire la registrazione.</li>
+            <li>Usa al massimo un terzo dello spazio libero, fino a 8 GB.</li>
+          </ul>
+          <div class="note warm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>La registrazione su disco funziona con i flussi MPEG-TS e HLS più comuni. Con gli altri (per esempio multicast udp/rtp, o HLS con tracce audio separate) la pausa resta in memoria e dura meno.</p></div>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#pause"/></svg></span>Pausing live TV</h2>
+          <p>Press pause on a channel: Divano starts recording it on the device and, when you resume, picks up where you were.</p>
+          <ul>
+            <li>The recording carries on even if you change channel or close the app, until the end of the programme plus half an hour (three hours when the channel has no guide). You'll find it on Home, in the <strong>Recording</strong> row, with <span class="ui">Stop</span> and <span class="ui">Delete</span>.</li>
+            <li>When you reach the end of the recording you're back live; <span class="ui">Live</span> takes you there right away.</li>
+            <li>One channel records at a time: pausing another one, Divano asks whether to replace the recording.</li>
+            <li>It uses at most a third of the free space, up to 8 GB.</li>
+          </ul>
+          <div class="note warm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Recording to disk works with the most common MPEG-TS and HLS streams. With others (for example udp/rtp multicast, or HLS with separate audio tracks) the pause stays in memory and lasts less.</p></div>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section id="vod">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#movie"/></svg></span>Film e serie</h2>
+          <p>La scheda di un film o di una serie mostra trama, anno, genere, regia e cast quando la sorgente li fornisce.</p>
+          <ul>
+            <li><span class="ui">Riproduci</span>, oppure <span class="ui">Riprendi da …</span> se l'avevi iniziato.</li>
+            <li><span class="ui">Da vedere</span> lo mette da parte nella Libreria.</li>
+            <li><span class="ui">Altre versioni</span>: se la sorgente ha lo stesso titolo più volte (lingue, qualità), Divano li raggruppa e ti fa scegliere; segna la versione consigliata e l'ultima vista.</li>
+            <li>Il trailer si apre su YouTube, se il fornitore lo indica.</li>
+          </ul>
+          <p>Nelle serie, a fine episodio parte il conto alla rovescia del <em>Prossimo episodio</em> (<span class="ui">Guarda ora</span> o <span class="ui">Annulla</span>). Tieni premuto un episodio per <span class="ui">Segna come visto</span> o <span class="ui">Segna come non visto</span>; quelli visti hanno la spunta verde.</p>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-05-series.webp" data-shot="../assets/shots/*/tv-05-series.webp" alt="La scheda di una serie sulla TV"></figure>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#movie"/></svg></span>Movies and series</h2>
+          <p>A movie or series page shows plot, year, genre, director and cast when your source provides them.</p>
+          <ul>
+            <li><span class="ui">Play</span>, or <span class="ui">Resume from …</span> if you had started it.</li>
+            <li><span class="ui">To watch</span> puts it aside in your Library.</li>
+            <li><span class="ui">Other versions</span>: when your source has the same title several times (languages, quality), Divano groups them and lets you choose; it marks the recommended version and the last one watched.</li>
+            <li>The trailer opens on YouTube, when the provider gives one.</li>
+          </ul>
+          <p>In a series, the <em>Next episode</em> countdown starts at the end of an episode (<span class="ui">Play now</span> or <span class="ui">Cancel</span>). Long-press an episode for <span class="ui">Mark as watched</span> or <span class="ui">Mark as unwatched</span>; watched ones get a green check.</p>
+          <figure><img loading="lazy" width="1280" height="720" src="../assets/shots/it/tv-05-series.webp" data-shot="../assets/shots/*/tv-05-series.webp" alt="A series page on a TV"></figure>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section id="downloads">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></span>Download per guardare offline</h2>
+          <ol class="steps">
+            <li>Nella scheda di un film tocca <span class="ui">Scarica</span>; in una serie, <span class="ui">Scarica la stagione</span> o <span class="ui">Scarica l'episodio</span>.</li>
+            <li>Il download continua anche in background, con una notifica che mostra l'avanzamento.</li>
+            <li>Ritrovi tutto in Libreria › <span class="ui">Scaricati</span>, con lo spazio occupato.</li>
+          </ol>
+          <p>In <span class="ui">Scaricati</span> c'è anche <span class="ui">Scarica solo con Wi-Fi</span>: con l'interruttore acceso, i download aspettano il Wi-Fi o la rete via cavo invece di usare i dati mobili.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></span>Downloads to watch offline</h2>
+          <ol class="steps">
+            <li>On a movie page tap <span class="ui">Download</span>; in a series, <span class="ui">Download season</span> or <span class="ui">Download episode</span>.</li>
+            <li>The download carries on in the background, with a notification showing its progress.</li>
+            <li>You'll find everything in Library › <span class="ui">Downloads</span>, with the space it takes.</li>
+          </ol>
+          <p><span class="ui">Downloads</span> also has <span class="ui">Download on Wi-Fi only</span>: with the switch on, downloads wait for Wi-Fi or Ethernet instead of using mobile data.</p>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section id="profiles">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#people"/></svg></span>Profili e "Guarda insieme"</h2>
+          <p>Ogni profilo ha i suoi preferiti, la sua lista <em>Da vedere</em>, la cronologia, gli elementi nascosti e i promemoria. Le sorgenti e le impostazioni sono in comune.</p>
+          <ol class="steps">
+            <li>Apri i profili: sul telefono dall'icona in cima alla Home, sulla TV dal profilo in cima al menu. Compare <strong>Chi guarda?</strong></li>
+            <li><span class="ui">Gestisci profili</span> › <span class="ui">Aggiungi</span>: scegli nome e colore.</li>
+            <li>Il primo profilo si chiama <em>Principale</em>; puoi rinominarlo come gli altri.</li>
+          </ol>
+          <h3>Guardare una serie insieme</h3>
+          <p>Con almeno due profili, la scheda di una serie o di un film mostra <span class="ui">Guarda insieme</span>. Scegli con chi lo guardi: i progressi avanzano per tutti. Se una sera guardi da solo, nel player scegli <span class="ui">Solo io</span> e i progressi degli altri non cambiano. Se qualcuno è più avanti, Divano te lo dice e ti propone di raggiungerlo.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#people"/></svg></span>Profiles and "Watch together"</h2>
+          <p>Each profile has its own favorites, <em>To watch</em> list, history, hidden items and reminders. Sources and settings are shared.</p>
+          <ol class="steps">
+            <li>Open profiles: on a phone from the icon at the top of Home, on a TV from the profile at the top of the menu. <strong>Who's watching?</strong> appears.</li>
+            <li><span class="ui">Manage profiles</span> › <span class="ui">Add</span>: pick a name and a colour.</li>
+            <li>The first profile is called <em>Main</em>; you can rename it like the others.</li>
+          </ol>
+          <h3>Watching a series together</h3>
+          <p>With at least two profiles, a series or movie page shows <span class="ui">Watch together</span>. Choose who watches it with you: progress moves on for all of you. If one evening you watch alone, choose <span class="ui">Just me</span> in the player and the others' progress stays as it is. When someone is further ahead, Divano tells you and offers to catch up.</p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section id="parental">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg></span>Controllo parentale, categorie ed elementi nascosti</h2>
+          <ol class="steps">
+            <li>Impostazioni › <span class="ui">Controllo parentale</span> › <span class="ui">Imposta un PIN</span> (da 4 a 8 cifre).</li>
+            <li>Le categorie per adulti si bloccano da sole, anche quelle che arrivano con gli aggiornamenti della sorgente.</li>
+            <li>In Impostazioni › <span class="ui">Categorie</span> scegli per ogni categoria di TV, film e serie se è <span class="ui">Visibile</span> e se è <span class="ui">Bloccata</span>.</li>
+          </ol>
+          <p>Le categorie bloccate spariscono da liste, ricerca e Home finché non inserisci il PIN. <span class="ui">Sblocca</span> le mostra fino a quando premi <span class="ui">Blocca ora</span> o chiudi l'app. Su Google TV i titoli bloccati restano fuori da <em>Continua a guardare</em>.</p>
+          <p>Canali e titoli nascosti dal loro menu si ritrovano in Impostazioni › <span class="ui">Elementi nascosti</span>, con <span class="ui">Mostra di nuovo</span>.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg></span>Parental control, categories and hidden items</h2>
+          <ol class="steps">
+            <li>Settings › <span class="ui">Parental control</span> › <span class="ui">Set a PIN</span> (4 to 8 digits).</li>
+            <li>Adult categories lock by themselves, including those that arrive with later source updates.</li>
+            <li>In Settings › <span class="ui">Categories</span> choose, for each TV, movie and series category, whether it's <span class="ui">Visible</span> and whether it's <span class="ui">Locked</span>.</li>
+          </ol>
+          <p>Locked categories disappear from lists, search and Home until you enter the PIN. <span class="ui">Unlock</span> shows them until you press <span class="ui">Lock now</span> or close the app. On Google TV, locked titles stay out of <em>Continue watching</em>.</p>
+          <p>Channels and titles hidden from their menu are in Settings › <span class="ui">Hidden items</span>, with <span class="ui">Show again</span>.</p>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section id="sync">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg></span>Sincronizzazione tra dispositivi</h2>
+          <p>Telefono e TV possono condividere profili, sorgenti (con le password), preferiti, lista <em>Da vedere</em>, progressi, elementi nascosti, canali rinominati, blocchi delle categorie e promemoria. Tutto è cifrato sui tuoi dispositivi con una chiave che il server non riceve mai.</p>
+          <ol class="steps">
+            <li>Sul telefono: Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Inizia qui</span>.</li>
+            <li>Sulla TV: Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Collega a un altro dispositivo</span>. La TV mostra un codice QR e aspetta. Su una TV appena installata trovi lo stesso pulsante nella Home vuota: <span class="ui">Sincronizza da un altro dispositivo</span>.</li>
+            <li>Sul telefono tocca <span class="ui">Aggiungi dispositivo</span>, consenti la fotocamera e inquadra il codice sulla TV.</li>
+            <li>Il telefono chiede <em>Aggiungere …?</em>: tocca <span class="ui">Aggiungi</span>. La TV dice chi l'ha fatta entrare e inizia a ricevere i dati.</li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Una TV non ha fotocamera: si collega sempre facendo inquadrare il suo codice da un telefono che sincronizza già. Il codice scade dopo 10 minuti. Se sulla TV compare un collegamento che non hai fatto tu, scegli <span class="ui">Non sono stato io</span>.</p></div>
+          <p>Quando è attiva, la stessa schermata mostra l'ora dell'ultima sincronizzazione, <span class="ui">Sincronizza ora</span> e l'elenco dei <strong>Dispositivi</strong>: <span class="ui">Rimuovi</span> ne scollega uno subito. <span class="ui">Disattiva la sincronizzazione</span> lascia i dati dove sono.</p>
+          <h3>Usare un altro server</h3>
+          <p>Prima di iniziare puoi cambiare il campo <strong>Server</strong>, su tutti i dispositivi allo stesso modo. Serve un indirizzo <code>https://</code>; <code>http://</code> è accettato solo per un server sulla rete di casa. Se il server accetta solo famiglie invitate, compare <span class="ui">Password del server</span>. Per crearne uno, vedi <a href="../sync/">Server di sincronizzazione</a>.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg></span>Sync between devices</h2>
+          <p>Phone and TV can share profiles, sources (with their passwords), favorites, the <em>To watch</em> list, progress, hidden items, renamed channels, category locks and reminders. Everything is encrypted on your devices with a key the server never receives.</p>
+          <ol class="steps">
+            <li>On the phone: Settings › <span class="ui">Sync</span> › <span class="ui">Start here</span>.</li>
+            <li>On the TV: Settings › <span class="ui">Sync</span> › <span class="ui">Join another device</span>. The TV shows a QR code and waits. On a freshly installed TV the same button is on the empty Home: <span class="ui">Sync from another device</span>.</li>
+            <li>On the phone tap <span class="ui">Add a device</span>, allow the camera and scan the code on the TV.</li>
+            <li>The phone asks <em>Add …?</em>: tap <span class="ui">Add</span>. The TV says who let it in and starts receiving your data.</li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>A TV has no camera: it always joins by having its code scanned by a phone that already syncs. The code expires after 10 minutes. If the TV shows a link you didn't make, choose <span class="ui">That wasn't me</span>.</p></div>
+          <p>Once on, the same screen shows when the last sync happened, <span class="ui">Sync now</span> and the list of <strong>Devices</strong>: <span class="ui">Remove</span> cuts one off right away. <span class="ui">Stop syncing</span> leaves your data where it is.</p>
+          <h3>Using another server</h3>
+          <p>Before you start you can change the <strong>Server</strong> field, the same way on every device. It needs an <code>https://</code> address; <code>http://</code> is only accepted for a server on your home network. If the server only takes invited households, <span class="ui">Server password</span> appears. To run one, see <a href="../sync/">Sync server</a>.</p>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section id="sources">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tune"/></svg></span>Gestire le sorgenti</h2>
+          <p>In Impostazioni › <span class="ui">Sorgenti</span> ogni sorgente mostra il tipo, la scadenza dell'abbonamento e il numero di connessioni (per Xtream) e quando è stata aggiornata. Per ognuna:</p>
+          <ul>
+            <li><span class="ui">Aggiorna</span> scarica di nuovo canali, film e serie. Divano lo fa anche da solo all'avvio, se l'ultimo aggiornamento ha più di un giorno (la guida TV più di 12 ore).</li>
+            <li><span class="ui">Guida TV</span> imposta il link XMLTV (<code>.xml</code> o <code>.xml.gz</code>); lascialo vuoto per disattivare la guida.</li>
+            <li><span class="ui">Elimina</span> toglie la sorgente con i suoi canali, film, serie, preferiti e cronologia.</li>
+          </ul>
+          <p><span class="ui">Aggiungi sorgente</span> ne aggiunge un'altra.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#tune"/></svg></span>Managing sources</h2>
+          <p>In Settings › <span class="ui">Sources</span> each source shows its type, the subscription's expiry and number of connections (for Xtream) and when it was last updated. For each one:</p>
+          <ul>
+            <li><span class="ui">Refresh</span> downloads channels, movies and series again. Divano also does it by itself at startup when the last update is more than a day old (the TV guide, more than 12 hours).</li>
+            <li><span class="ui">TV guide</span> sets the XMLTV link (<code>.xml</code> or <code>.xml.gz</code>); leave it empty to turn the guide off.</li>
+            <li><span class="ui">Delete</span> removes the source with its channels, movies, series, favorites and history.</li>
+          </ul>
+          <p><span class="ui">Add source</span> adds another one.</p>
+        </div>
+      </section>
+
+      <!-- 13 -->
+      <section id="backup">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#backup"/></svg></span>Backup e ripristino</h2>
+          <p>Impostazioni › <span class="ui">Backup e ripristino</span>: <span class="ui">Salva backup</span> crea un file con le sorgenti, i canali rinominati e ogni profilo con preferiti, lista <em>Da vedere</em>, cronologia ed elementi nascosti. <span class="ui">Ripristina da file</span> lo ricarica, anche su un altro dispositivo, e reimporta le sorgenti.</p>
+          <div class="note warm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg><p>Il file contiene le password delle sorgenti in chiaro: conservalo in un posto sicuro. Il PIN del controllo parentale non è incluso.</p></div>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#backup"/></svg></span>Backup and restore</h2>
+          <p>Settings › <span class="ui">Backup and restore</span>: <span class="ui">Save backup</span> creates a file with your sources, renamed channels and every profile with its favorites, <em>To watch</em> list, history and hidden items. <span class="ui">Restore from file</span> loads it back, on another device too, and imports the sources again.</p>
+          <div class="note warm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg><p>The file holds your source passwords in plain text: keep it somewhere safe. The parental PIN is not included.</p></div>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section id="problems">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg></span>Se qualcosa non va</h2>
+          <div class="table"><table>
+            <thead><tr><th>Messaggio</th><th>Cosa fare</th></tr></thead>
+            <tbody>
+              <tr><td>Nome utente o password errati.</td><td>Controlla i dati che ti ha dato il fornitore.</td></tr>
+              <tr><td>L'abbonamento è scaduto.</td><td>Rinnovalo presso il fornitore, poi <span class="ui">Aggiorna</span> la sorgente.</td></tr>
+              <tr><td>Questo server non risponde come un pannello Xtream.</td><td>Usa il link M3U invece del login Xtream.</td></tr>
+              <tr><td>Questo link non porta a una playlist M3U.</td><td>Il link è sbagliato o scaduto: chiedine uno nuovo al fornitore.</td></tr>
+              <tr><td>Ancora nessuna guida TV</td><td>Aggiungi il link XMLTV in Impostazioni › Sorgenti › <span class="ui">Guida TV</span>.</td></tr>
+              <tr><td>Accesso negato (HTTP 403).</td><td>L'abbonamento potrebbe essere scaduto o già in uso su un altro dispositivo.</td></tr>
+              <tr><td>Questo dispositivo non riesce a decodificare l'audio o il video dello stream.</td><td>Il formato del flusso non è supportato da questo dispositivo: prova un'altra versione del canale o del titolo.</td></tr>
+            </tbody>
+          </table></div>
+          <p>Per tutto il resto scrivi a <a href="mailto:app+divano@dambox.ch">app+divano@dambox.ch</a>. Divano non vende né fornisce abbonamenti: per i contenuti rivolgiti al tuo fornitore.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg></span>When something's wrong</h2>
+          <div class="table"><table>
+            <thead><tr><th>Message</th><th>What to do</th></tr></thead>
+            <tbody>
+              <tr><td>Wrong username or password.</td><td>Check the details your provider gave you.</td></tr>
+              <tr><td>This subscription has expired.</td><td>Renew it with your provider, then <span class="ui">Refresh</span> the source.</td></tr>
+              <tr><td>This server doesn't answer like an Xtream panel.</td><td>Use the M3U link instead of the Xtream login.</td></tr>
+              <tr><td>This link doesn't point to an M3U playlist.</td><td>The link is wrong or expired: ask your provider for a new one.</td></tr>
+              <tr><td>No TV guide yet</td><td>Add the XMLTV link in Settings › Sources › <span class="ui">TV guide</span>.</td></tr>
+              <tr><td>Access denied (HTTP 403).</td><td>The account may be expired or already in use on another device.</td></tr>
+              <tr><td>This device can't decode this stream's audio or video.</td><td>This device doesn't support the stream's format: try another version of the channel or title.</td></tr>
+            </tbody>
+          </table></div>
+          <p>For anything else write to <a href="mailto:app+divano@dambox.ch">app+divano@dambox.ch</a>. Divano doesn't sell or provide subscriptions: for content, ask your provider.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="site">
+    <div class="wrap">
+      <div class="cols">
+        <div class="brandline"><svg aria-hidden="true"><use href="../assets/icons.svg#sofa"/></svg>Divano</div>
+        <nav aria-label="Footer">
+          <a href="../">Home</a>
+          <a href="../sync/"><span class="it">Server di sincronizzazione</span><span class="en">Sync server</span></a>
+          <a href="../privacy/">Privacy</a>
+          <a href="../ffmpeg/">FFmpeg (LGPL)</a>
+          <a href="mailto:app+divano@dambox.ch">app+divano@dambox.ch</a>
+        </nav>
+      </div>
+      <p class="fine"><span class="it">Divano è un lettore: non contiene e non fornisce canali, film, serie o abbonamenti.</span><span class="en">Divano is a player: it does not include or provide any channels, movies, series or subscriptions.</span></p>
+    </div>
+  </footer>
+</main>
+
+<nav class="tabbar" aria-label="Menu">
+  <a href="../"><span class="pill"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#home"/></svg></span>Home</a>
+  <a href="./" aria-current="page"><span class="pill"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#book"/></svg></span><span class="it">Guida</span><span class="en">Guide</span></a>
+  <a href="../sync/"><span class="pill"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg></span>Sync</a>
+  <a href="../privacy/"><span class="pill"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></span>Privacy</a>
+</nav>
+</body>
+</html>

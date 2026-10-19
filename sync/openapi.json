@@ -1,0 +1,1161 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Divano Sync",
+    "version": "1",
+    "summary": "End-to-end encrypted sync between the devices of one household.",
+    "description": "A sync server stores opaque, end-to-end encrypted records for a *space* (the devices of one\nhousehold) and hands out an ordered change feed. It never sees what the records contain: profiles,\nfavorites, progress and sources are encrypted on the devices with a key the server never receives.\n\nThe same protocol runs on the official server and on self-hosted ones: the app only needs the base\nURL. Record payloads, key derivation and pairing cryptography are specified in `README.md` next to\nthis file; the server does not need to understand them.\n\nConventions:\n- All bodies are JSON (`application/json`), errors are `application/problem+json` (RFC 9457).\n- Binary values (blobs, keys) are base64url without padding.\n- Times are Unix epoch milliseconds.\n- Authenticated calls send `Authorization: Bearer <device token>`. Servers store only a hash of\n  the token.\n"
+  },
+  "servers": [
+    {
+      "url": "https://sync.example.org",
+      "description": "Any Divano sync server; the app is configured with this base URL."
+    }
+  ],
+  "tags": [
+    {
+      "name": "discovery",
+      "description": "What a server supports, before signing in."
+    },
+    {
+      "name": "space",
+      "description": "The household a device belongs to."
+    },
+    {
+      "name": "devices",
+      "description": "Members of the space."
+    },
+    {
+      "name": "pairing",
+      "description": "Adding a device to a space by scanning its QR code."
+    },
+    {
+      "name": "records",
+      "description": "The encrypted change feed."
+    }
+  ],
+  "paths": {
+    "/discovery": {
+      "get": {
+        "tags": [
+          "discovery"
+        ],
+        "operationId": "discover",
+        "summary": "What this server supports",
+        "description": "Unauthenticated. The app calls it when the user enters a server URL and before each sync\nsession. Not under /.well-known: some hosts (Vercel) reserve that path for themselves.\n",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Server capabilities",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Discovery"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/spaces": {
+      "post": {
+        "tags": [
+          "space"
+        ],
+        "operationId": "createSpace",
+        "summary": "Create a space with the calling device as its first member",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSpaceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Space created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Credentials"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/v1/space": {
+      "get": {
+        "tags": [
+          "space"
+        ],
+        "operationId": "getSpace",
+        "summary": "Usage and limits of the caller's space",
+        "responses": {
+          "200": {
+            "description": "The space",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Space"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "space"
+        ],
+        "operationId": "deleteSpace",
+        "summary": "Delete the space, its devices and all its records",
+        "description": "Irreversible. Every device token of the space stops working.",
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/devices": {
+      "get": {
+        "tags": [
+          "devices"
+        ],
+        "operationId": "listDevices",
+        "summary": "Devices of the space",
+        "description": "The server knows only ids, kinds and timestamps. Device names live in encrypted `device`\nrecords (see README).\n",
+        "responses": {
+          "200": {
+            "description": "Devices",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "devices"
+                  ],
+                  "properties": {
+                    "devices": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Device"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/devices/{deviceId}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/DeviceId"
+        }
+      ],
+      "delete": {
+        "tags": [
+          "devices"
+        ],
+        "operationId": "revokeDevice",
+        "summary": "Revoke a device (or leave the space, when it is the caller)",
+        "description": "The device's token stops working immediately. Revoking the last device deletes the space.",
+        "responses": {
+          "204": {
+            "description": "Revoked"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/pairings": {
+      "post": {
+        "tags": [
+          "pairing"
+        ],
+        "operationId": "startPairing",
+        "summary": "A new device asks to join a space",
+        "description": "Called by the device that wants to join (typically the TV), which then shows a QR code with\nthe server URL, the `code` and the fingerprint of `publicKey`. Unauthenticated: servers must\nrate-limit it per IP.\n",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PairingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pairing open until `expiresAt`",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PairingTicket"
+                }
+              }
+            }
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    },
+    "/v1/pairings/{code}": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/PairingCode"
+        }
+      ],
+      "get": {
+        "tags": [
+          "pairing"
+        ],
+        "operationId": "getPairing",
+        "summary": "A member of a space reads a pending pairing (after scanning its QR code)",
+        "description": "The caller must check that the fingerprint of `publicKey` matches the one in the QR code\nbefore approving; otherwise the server could substitute its own key.\n",
+        "responses": {
+          "200": {
+            "description": "The pending pairing",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PendingPairing"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "pairing"
+        ],
+        "operationId": "cancelPairing",
+        "summary": "The joining device gives up",
+        "security": [
+          {
+            "pairingToken": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Cancelled"
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/pairings/{code}/approve": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/PairingCode"
+        }
+      ],
+      "post": {
+        "tags": [
+          "pairing"
+        ],
+        "operationId": "approvePairing",
+        "summary": "A member of a space lets the new device in",
+        "description": "The server creates the new device in the caller's space, issues its token and keeps `sealed`\n(the space key encrypted for the new device) until the new device collects it.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApprovePairingRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Approved"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "409": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/pairings/{code}/result": {
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/PairingCode"
+        }
+      ],
+      "get": {
+        "tags": [
+          "pairing"
+        ],
+        "operationId": "getPairingResult",
+        "summary": "The joining device waits for approval",
+        "description": "Long-polls up to `wait` seconds. Once an `approved` result has been returned the server\ndeletes the pairing: a second call gets 404.\n",
+        "security": [
+          {
+            "pairingToken": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Wait"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pending or approved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PairingResult"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/records": {
+      "get": {
+        "tags": [
+          "records"
+        ],
+        "operationId": "pullRecords",
+        "summary": "Changes after a cursor, in order",
+        "description": "Returns records whose `rev` is greater than `since`, in ascending `rev` order, at most\n`limit` of them. With no `since` the feed starts from the beginning (full sync).\n\nIf nothing changed and `wait` is set, the server holds the request until a change arrives or\n`wait` seconds pass, then answers with an empty list and the same cursor. Servers without the\n`longpoll` feature answer immediately.\n\n410 `cursor_expired` means tombstones after `since` were purged: the client must do a full\nsync (no `since`).\n",
+        "parameters": [
+          {
+            "name": "since",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/Cursor"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000,
+              "default": 500
+            }
+          },
+          {
+            "$ref": "#/components/parameters/Wait"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of the change feed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RecordPage"
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "410": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "records"
+        ],
+        "operationId": "pushRecords",
+        "summary": "Write records with compare-and-set",
+        "description": "Each write applies only if the record's current `rev` equals `baseRev` (0 means \"does not\nexist yet\"). Writes are independent: some can apply while others conflict. Applied writes get\nnew, increasing `rev`s in request order. For a conflict the current record is returned so the\nclient can merge and retry.\n\nThe whole request fails with 413 `quota_exceeded` if applying it would exceed the space's\nlimits; nothing is applied in that case.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PushRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "One result per write, in request order",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PushResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "413": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "deviceToken": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "deviceToken": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Token issued by createSpace or by pairing. Opaque, at least 128 bits of entropy."
+      },
+      "pairingToken": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-Pairing-Token",
+        "description": "The `pollToken` from startPairing. A header, so it stays out of access logs."
+      }
+    },
+    "parameters": {
+      "DeviceId": {
+        "name": "deviceId",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/Id"
+        }
+      },
+      "PairingCode": {
+        "name": "code",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/PairingCode"
+        }
+      },
+      "Wait": {
+        "name": "wait",
+        "in": "query",
+        "description": "Seconds to hold the request open; capped at the server's `limits.maxWaitSeconds`.",
+        "schema": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 0
+        }
+      }
+    },
+    "responses": {
+      "Problem": {
+        "description": "Error",
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "Too many requests",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds to wait",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        },
+        "content": {
+          "application/problem+json": {
+            "schema": {
+              "$ref": "#/components/schemas/Problem"
+            }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Id": {
+        "type": "string",
+        "description": "Server-generated identifier, opaque to clients.",
+        "pattern": "^[A-Za-z0-9_-]{8,64}$"
+      },
+      "Cursor": {
+        "type": "string",
+        "description": "Opaque position in the change feed. Clients store it and send it back unchanged.",
+        "maxLength": 128
+      },
+      "PairingCode": {
+        "type": "string",
+        "description": "8 characters of Crockford base32 (40 bits), shown in the QR code.",
+        "pattern": "^[0-9A-HJKMNP-TV-Z]{8}$",
+        "examples": [
+          "K7Q2MXH4"
+        ]
+      },
+      "Base64Url": {
+        "type": "string",
+        "contentEncoding": "base64url",
+        "pattern": "^[A-Za-z0-9_-]*$"
+      },
+      "DeviceKind": {
+        "type": "string",
+        "enum": [
+          "tv",
+          "phone",
+          "tablet",
+          "other"
+        ]
+      },
+      "Discovery": {
+        "type": "object",
+        "required": [
+          "protocols",
+          "registration",
+          "limits",
+          "features"
+        ],
+        "properties": {
+          "protocols": {
+            "type": "array",
+            "description": "Protocol versions served; v1 lives under `/v1`.",
+            "items": {
+              "type": "integer"
+            },
+            "examples": [
+              [
+                1
+              ]
+            ]
+          },
+          "registration": {
+            "type": "string",
+            "description": "`open`: anyone can create a space. `secret`: createSpace needs `registrationSecret`\n(typical for self-hosted servers). `closed`: no new spaces.\n",
+            "enum": [
+              "open",
+              "secret",
+              "closed"
+            ]
+          },
+          "features": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "longpoll"
+              ]
+            }
+          },
+          "limits": {
+            "$ref": "#/components/schemas/Limits"
+          },
+          "operator": {
+            "type": "object",
+            "description": "Shown in the app's sync settings.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 80
+              },
+              "privacyUrl": {
+                "type": "string",
+                "format": "uri"
+              },
+              "contact": {
+                "type": "string",
+                "maxLength": 200
+              }
+            }
+          }
+        }
+      },
+      "Limits": {
+        "type": "object",
+        "required": [
+          "maxRecords",
+          "maxBytes",
+          "maxBlobBytes",
+          "maxBatch",
+          "maxDevices",
+          "maxWaitSeconds",
+          "tombstoneRetentionDays"
+        ],
+        "properties": {
+          "maxRecords": {
+            "type": "integer",
+            "description": "Live records (tombstones excluded) per space."
+          },
+          "maxBytes": {
+            "type": "integer",
+            "description": "Sum of decoded blob sizes per space."
+          },
+          "maxBlobBytes": {
+            "type": "integer",
+            "description": "Decoded size of one blob. At least 16384."
+          },
+          "maxBatch": {
+            "type": "integer",
+            "description": "Writes per pushRecords call. At least 100."
+          },
+          "maxDevices": {
+            "type": "integer"
+          },
+          "maxWaitSeconds": {
+            "type": "integer",
+            "description": "0 when long-poll is not supported."
+          },
+          "tombstoneRetentionDays": {
+            "type": "integer",
+            "description": "Tombstones older than this may be purged; at least 30."
+          },
+          "inactiveSpaceDays": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Spaces without any request for this many days are deleted; null for never."
+          }
+        }
+      },
+      "CreateSpaceRequest": {
+        "type": "object",
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/DeviceKind"
+          },
+          "registrationSecret": {
+            "type": "string",
+            "description": "Required when discovery says `registration: secret`.",
+            "maxLength": 256
+          }
+        }
+      },
+      "Credentials": {
+        "type": "object",
+        "required": [
+          "spaceId",
+          "deviceId",
+          "token"
+        ],
+        "properties": {
+          "spaceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "deviceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "token": {
+            "type": "string",
+            "description": "Device token for the Authorization header. Shown only once."
+          }
+        }
+      },
+      "Space": {
+        "type": "object",
+        "required": [
+          "spaceId",
+          "createdAt",
+          "usage",
+          "limits"
+        ],
+        "properties": {
+          "spaceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "usage": {
+            "type": "object",
+            "required": [
+              "records",
+              "bytes",
+              "devices"
+            ],
+            "properties": {
+              "records": {
+                "type": "integer"
+              },
+              "bytes": {
+                "type": "integer"
+              },
+              "devices": {
+                "type": "integer"
+              }
+            }
+          },
+          "limits": {
+            "$ref": "#/components/schemas/Limits"
+          }
+        }
+      },
+      "Device": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "createdAt",
+          "lastSeenAt",
+          "current"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/DeviceKind"
+          },
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "lastSeenAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "Last authenticated request, rounded down to the hour."
+          },
+          "current": {
+            "type": "boolean",
+            "description": "True for the device making the call."
+          }
+        }
+      },
+      "PairingRequest": {
+        "type": "object",
+        "required": [
+          "kind",
+          "name",
+          "publicKey"
+        ],
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/DeviceKind"
+          },
+          "name": {
+            "type": "string",
+            "description": "Shown to the approver (\"Approve Living room TV?\"). Deleted with the pairing.",
+            "maxLength": 60
+          },
+          "publicKey": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "description": "Ephemeral P-256 public key, X.509 SubjectPublicKeyInfo DER.",
+            "maxLength": 200
+          }
+        }
+      },
+      "PairingTicket": {
+        "type": "object",
+        "required": [
+          "code",
+          "pollToken",
+          "expiresAt"
+        ],
+        "properties": {
+          "code": {
+            "$ref": "#/components/schemas/PairingCode"
+          },
+          "pollToken": {
+            "type": "string",
+            "description": "Secret for getPairingResult and cancelPairing."
+          },
+          "expiresAt": {
+            "type": "integer",
+            "format": "int64",
+            "description": "At most 10 minutes after creation."
+          }
+        }
+      },
+      "PendingPairing": {
+        "type": "object",
+        "required": [
+          "kind",
+          "name",
+          "publicKey",
+          "expiresAt"
+        ],
+        "properties": {
+          "kind": {
+            "$ref": "#/components/schemas/DeviceKind"
+          },
+          "name": {
+            "type": "string"
+          },
+          "publicKey": {
+            "$ref": "#/components/schemas/Base64Url"
+          },
+          "expiresAt": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
+      "Sealed": {
+        "type": "object",
+        "description": "The space key and space id, encrypted for the joining device (README, \"Pairing\").",
+        "required": [
+          "ephemeralPublicKey",
+          "box"
+        ],
+        "properties": {
+          "ephemeralPublicKey": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "maxLength": 200
+          },
+          "box": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "maxLength": 2048
+          }
+        }
+      },
+      "ApprovePairingRequest": {
+        "type": "object",
+        "required": [
+          "sealed"
+        ],
+        "properties": {
+          "sealed": {
+            "$ref": "#/components/schemas/Sealed"
+          }
+        }
+      },
+      "PairingResult": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "status"
+            ],
+            "properties": {
+              "status": {
+                "const": "pending"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "status",
+              "spaceId",
+              "deviceId",
+              "token",
+              "sealed"
+            ],
+            "properties": {
+              "status": {
+                "const": "approved"
+              },
+              "spaceId": {
+                "$ref": "#/components/schemas/Id"
+              },
+              "deviceId": {
+                "$ref": "#/components/schemas/Id"
+              },
+              "token": {
+                "type": "string"
+              },
+              "sealed": {
+                "$ref": "#/components/schemas/Sealed"
+              }
+            }
+          }
+        ],
+        "discriminator": {
+          "propertyName": "status"
+        }
+      },
+      "RecordId": {
+        "type": "string",
+        "description": "Chosen by clients: 22 base64url characters, the truncated HMAC of the record's collection\nand natural key (README, \"Record ids\"). Unique within a space.\n",
+        "pattern": "^[A-Za-z0-9_-]{22}$"
+      },
+      "Record": {
+        "type": "object",
+        "required": [
+          "id",
+          "rev",
+          "deleted"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RecordId"
+          },
+          "rev": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "Assigned by the server; strictly increasing across the whole space. 0 only in a\n`conflict`, for a record the server doesn't have (never written, or deleted and its\ntombstone purged): retry with `baseRev: 0`.\n"
+          },
+          "deleted": {
+            "type": "boolean",
+            "description": "Tombstone. Tombstones have no blob."
+          },
+          "blob": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "description": "Encrypted payload (README, \"Blob format\"). Present unless `deleted`."
+          }
+        }
+      },
+      "RecordPage": {
+        "type": "object",
+        "required": [
+          "records",
+          "cursor",
+          "hasMore"
+        ],
+        "properties": {
+          "records": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Record"
+            }
+          },
+          "cursor": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Cursor"
+              }
+            ],
+            "description": "Pass as `since` for the next page. Store it only after applying the page."
+          },
+          "hasMore": {
+            "type": "boolean",
+            "description": "True when the page was cut at `limit`; fetch again right away."
+          }
+        }
+      },
+      "RecordWrite": {
+        "type": "object",
+        "required": [
+          "id",
+          "baseRev"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/components/schemas/RecordId"
+          },
+          "baseRev": {
+            "type": "integer",
+            "format": "int64",
+            "minimum": 0,
+            "description": "The `rev` the client last saw for this record; 0 if it has never existed."
+          },
+          "blob": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "description": "New payload. Exactly one of `blob` or `deleted: true`."
+          },
+          "deleted": {
+            "type": "boolean",
+            "const": true
+          }
+        }
+      },
+      "PushRequest": {
+        "type": "object",
+        "required": [
+          "writes"
+        ],
+        "properties": {
+          "writes": {
+            "type": "array",
+            "minItems": 1,
+            "description": "At most `limits.maxBatch`; each id at most once.",
+            "items": {
+              "$ref": "#/components/schemas/RecordWrite"
+            }
+          }
+        }
+      },
+      "WriteResult": {
+        "oneOf": [
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "status",
+              "rev"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/components/schemas/RecordId"
+              },
+              "status": {
+                "const": "applied"
+              },
+              "rev": {
+                "type": "integer",
+                "format": "int64"
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "id",
+              "status",
+              "current"
+            ],
+            "properties": {
+              "id": {
+                "$ref": "#/components/schemas/RecordId"
+              },
+              "status": {
+                "const": "conflict"
+              },
+              "current": {
+                "$ref": "#/components/schemas/Record"
+              }
+            }
+          }
+        ],
+        "discriminator": {
+          "propertyName": "status"
+        }
+      },
+      "PushResponse": {
+        "type": "object",
+        "required": [
+          "results"
+        ],
+        "properties": {
+          "results": {
+            "type": "array",
+            "description": "Applied writes show up again in the pull feed; the client recognises them because it\nalready holds that `rev`.\n",
+            "items": {
+              "$ref": "#/components/schemas/WriteResult"
+            }
+          }
+        }
+      },
+      "Problem": {
+        "type": "object",
+        "required": [
+          "type",
+          "title",
+          "status",
+          "code"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri-reference",
+            "default": "about:blank"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string",
+            "description": "Stable, machine-readable reason.",
+            "enum": [
+              "bad_request",
+              "unauthorized",
+              "registration_closed",
+              "registration_secret_invalid",
+              "not_found",
+              "already_approved",
+              "device_limit",
+              "quota_exceeded",
+              "blob_too_large",
+              "batch_too_large",
+              "cursor_expired",
+              "rate_limited",
+              "protocol_unsupported"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
