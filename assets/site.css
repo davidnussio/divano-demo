@@ -44,7 +44,7 @@ body {
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: var(--primary-hi); text-decoration-thickness: 1px; text-underline-offset: 3px; }
 a:hover { color: var(--primary-pale); }
 :focus-visible { outline: 3px solid var(--text); outline-offset: 3px; border-radius: 10px; }
@@ -249,14 +249,14 @@ a.card:hover { transform: translateY(-3px); box-shadow: 0 0 0 3px var(--text); c
 
 .feature {
   position: relative; isolation: isolate; overflow: hidden; border-radius: 24px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; align-items: stretch;
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 0; align-items: stretch;
   background: var(--surface-2); border: 1px solid rgba(42, 52, 80, .8);
 }
 .feature .text { padding: clamp(24px, 4vw, 44px); }
 .feature .art { background-size: cover; background-position: center; min-height: 260px; position: relative; }
 .feature .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--surface-2), rgba(26, 34, 54, 0) 40%); }
 @media (max-width: 760px) {
-  .feature { grid-template-columns: 1fr; }
+  .feature { grid-template-columns: minmax(0, 1fr); }
   .feature .art { min-height: 180px; order: -1; }
   .feature .art::after { background: linear-gradient(0deg, var(--surface-2), rgba(26, 34, 54, 0) 60%); }
 }
