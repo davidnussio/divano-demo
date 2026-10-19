@@ -320,7 +320,8 @@ ol.steps > li::before {
 }
 .prose figure { margin: 24px 0; }
 .prose figure img { border-radius: 16px; box-shadow: 0 18px 40px rgba(0, 0, 0, .35); }
-.prose figure.phone img { max-width: 300px; }
+.prose figure.phone img { width: min(380px, 88%); margin: 0 auto; }
+.prose figure.phone figcaption { text-align: center; }
 .prose figcaption { color: var(--muted); font-size: 14px; margin-top: 10px; }
 .platforms { display: flex; gap: 8px; flex-wrap: wrap; margin: -4px 0 14px; }
 
