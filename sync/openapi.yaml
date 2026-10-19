@@ -377,7 +377,7 @@ components:
         limits: { $ref: "#/components/schemas/Limits" }
         operator:
           type: object
-          description: Shown in the app's sync settings.
+          description: Who runs the server, with its privacy policy and a contact.
           properties:
             name: { type: string, maxLength: 80 }
             privacyUrl: { type: string, format: uri }

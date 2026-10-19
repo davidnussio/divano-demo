@@ -613,7 +613,7 @@
           },
           "operator": {
             "type": "object",
-            "description": "Shown in the app's sync settings.",
+            "description": "Who runs the server, with its privacy policy and a contact.",
             "properties": {
               "name": {
                 "type": "string",
