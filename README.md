@@ -18,6 +18,9 @@ Plain HTML, no build step (`.nojekyll`). Every page holds Italian and English: e
 | `ffmpeg/` | The LGPL source of the FFmpeg the app ships, and how it was built |
 | `assets/` | Style, script, icons, Nunito (SIL OFL) and screenshots in both languages |
 
+After editing `assets/site.css`, `assets/site.js` or `sync/api.js`, run `python3 tools/version-assets.py`:
+it stamps their links with a content hash, so browsers don't keep the old copy (Pages caches for 10 minutes).
+
 When the sync protocol changes, copy `docs/sync/openapi.yaml` from the app's repository into `sync/`
 and regenerate the JSON: `yq -o=json sync/openapi.yaml > sync/openapi.json`.
 
