@@ -15,6 +15,8 @@
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
       var src = img.getAttribute('data-shot').replace('*', lang);
       if (img.getAttribute('src') !== src) img.setAttribute('src', src);
+      var alt = img.getAttribute('data-alt-' + lang);
+      if (alt) img.setAttribute('alt', alt);
     });
     document.querySelectorAll('[data-set-lang]').forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.getAttribute('data-set-lang') === lang));
