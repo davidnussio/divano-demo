@@ -18,6 +18,12 @@ Plain HTML, no build step (`.nojekyll`). Every page holds Italian and English: e
 | `ffmpeg/` | The LGPL source of the FFmpeg the app ships, and how it was built |
 | `assets/` | Style, script, icons, Nunito (SIL OFL) and screenshots in both languages |
 
+Each page's head carries its title and description in both languages (`data-title-*`,
+`data-description-*`, swapped by `site.js`), Open Graph tags and `hreflang` links: `?lang=it` and
+`?lang=en` are the two language versions, the bare URL is `x-default`. The inline script adds the
+canonical that matches. A new page also goes in `sitemap.xml`. The footer links to
+[dambox.ch](https://dambox.ch/), which lists Divano among its projects.
+
 After editing `assets/site.css`, `assets/site.js` or `sync/api.js`, run `python3 tools/version-assets.py`:
 it stamps their links with a content hash, so browsers don't keep the old copy (Pages caches for 10 minutes).
 

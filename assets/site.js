@@ -8,6 +8,9 @@
     root.lang = lang;
     var title = root.getAttribute('data-title-' + lang);
     if (title) document.title = title;
+    var description = root.getAttribute('data-description-' + lang);
+    var meta = document.querySelector('meta[name="description"]');
+    if (description && meta) meta.setAttribute('content', description);
     // Screenshots exist in both languages: data-shot="…/shots/*/name.webp".
     document.querySelectorAll('img[data-shot]').forEach(function (img) {
       var src = img.getAttribute('data-shot').replace('*', lang);

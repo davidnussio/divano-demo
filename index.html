@@ -1,20 +1,33 @@
 <!doctype html>
-<html lang="it" data-title-it="Divano – Lettore IPTV per telefono e Android TV" data-title-en="Divano – IPTV player for phone and Android TV">
+<html lang="it" data-title-it="Divano – Lettore IPTV per telefono e Android TV" data-title-en="Divano – IPTV player for phone and Android TV" data-description-it="Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento." data-description-en="Divano plays M3U playlists, Xtream accounts and XMLTV guides on phones and Android TV. Free, with no account, no ads and no tracking.">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Divano – Lettore IPTV per telefono e Android TV</title>
-<meta name="description" content="Divano plays your M3U playlists, Xtream accounts and XMLTV guides on phones and Android TV. Divano riproduce le tue playlist M3U, gli account Xtream e le guide XMLTV su telefono e Android TV.">
+<meta name="description" content="Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento.">
 <meta name="theme-color" content="#070B14">
-<meta property="og:title" content="Divano – IPTV player">
-<meta property="og:description" content="TV, serie e film: sempre a portata di divano.">
+<link rel="alternate" hreflang="it" href="https://divano.dambox.ch/?lang=it">
+<link rel="alternate" hreflang="en" href="https://divano.dambox.ch/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://divano.dambox.ch/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Divano">
+<meta property="og:url" content="https://divano.dambox.ch/">
+<meta property="og:title" content="Divano – Lettore IPTV per telefono e Android TV">
+<meta property="og:description" content="Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento.">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://divano.dambox.ch/assets/og.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Divano">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="preload" href="assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="assets/site.css?v=505657a8">
-<script>!function(){var d=document.documentElement,l=new URLSearchParams(location.search).get("lang");if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l}()</script>
-<script src="assets/site.js?v=75941641" defer></script>
+<link rel="stylesheet" href="assets/site.css?v=226ebbf9">
+<script>!function(){var d=document.documentElement,q=new URLSearchParams(location.search).get("lang"),l=q;if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l;var c=document.createElement("link"),a;c.rel="canonical";a=document.querySelector('link[hreflang="'+(q==="it"||q==="en"?q:"x-default")+'"]');if(a){c.href=a.href;document.head.appendChild(c)}}()</script>
+<script src="assets/site.js?v=8292113b" defer></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://divano.dambox.ch/#website", "url": "https://divano.dambox.ch/", "name": "Divano", "inLanguage": ["it", "en"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "SoftwareApplication", "@id": "https://divano.dambox.ch/#app", "name": "Divano", "url": "https://divano.dambox.ch/", "description": "Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Android, Android TV", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}, "screenshot": ["https://divano.dambox.ch/assets/shots/it/tv-01-home.webp", "https://divano.dambox.ch/assets/shots/it/phone-01-home.webp"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "Organization", "@id": "https://dambox.ch/#organization", "name": "dambox Sagl", "url": "https://dambox.ch/"}]}</script>
 </head>
 <body>
 
@@ -207,6 +220,7 @@
         <span class="it">Carattere Nunito (<a href="assets/NUNITO_OFL.txt">SIL Open Font License</a>), icone Material (Apache 2.0).</span>
         <span class="en">Nunito typeface (<a href="assets/NUNITO_OFL.txt">SIL Open Font License</a>), Material icons (Apache 2.0).</span>
       </p>
+      <p class="by"><span class="it">Un'app di</span><span class="en">An app by</span> <a href="https://dambox.ch/">dambox</a>, Lugano</p>
     </div>
   </footer>
 </main>

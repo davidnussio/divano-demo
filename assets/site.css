@@ -361,6 +361,8 @@ footer.site nav { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 footer.site nav a { color: var(--soft); text-decoration: none; font-weight: 700; }
 footer.site nav a:hover { color: var(--text); text-decoration: underline; }
 footer.site .fine { margin-top: 22px; font-size: 13px; max-width: 80ch; }
+footer.site .by { margin-top: 14px; font-size: 13px; }
+footer.site .by a { color: var(--soft); font-weight: 700; }
 
 /* ---------- API reference (sync/) ---------- */
 

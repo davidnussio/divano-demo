@@ -1,17 +1,32 @@
 <!doctype html>
-<html lang="it" data-title-it="Guida all'uso – Divano" data-title-en="User guide – Divano">
+<html lang="it" data-title-it="Guida all'uso – Divano, lettore IPTV" data-title-en="User guide – Divano IPTV player" data-description-it="Come usare Divano su telefono e Android TV: aggiungere una playlist, guida TV, pausa della diretta, film e serie, profili e sincronizzazione." data-description-en="How to use Divano on phones and Android TV: adding a playlist, the TV guide, pausing live TV, movies and series, profiles and sync.">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Guida all'uso – Divano</title>
-<meta name="description" content="Come usare Divano su telefono e Android TV: sorgenti, guida TV, pausa della diretta, film e serie, profili, sincronizzazione. How to use Divano on phones and Android TV.">
+<title>Guida all'uso – Divano, lettore IPTV</title>
+<meta name="description" content="Come usare Divano su telefono e Android TV: aggiungere una playlist, guida TV, pausa della diretta, film e serie, profili e sincronizzazione.">
 <meta name="theme-color" content="#070B14">
+<link rel="alternate" hreflang="it" href="https://divano.dambox.ch/guide/?lang=it">
+<link rel="alternate" hreflang="en" href="https://divano.dambox.ch/guide/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://divano.dambox.ch/guide/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Divano">
+<meta property="og:url" content="https://divano.dambox.ch/guide/">
+<meta property="og:title" content="Guida all'uso – Divano, lettore IPTV">
+<meta property="og:description" content="Come usare Divano su telefono e Android TV: aggiungere una playlist, guida TV, pausa della diretta, film e serie, profili e sincronizzazione.">
+<meta property="og:locale" content="it_IT">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://divano.dambox.ch/assets/og.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="500">
+<meta property="og:image:alt" content="Divano">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="preload" href="../assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=505657a8">
-<script>!function(){var d=document.documentElement,l=new URLSearchParams(location.search).get("lang");if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l}()</script>
-<script src="../assets/site.js?v=75941641" defer></script>
+<link rel="stylesheet" href="../assets/site.css?v=226ebbf9">
+<script>!function(){var d=document.documentElement,q=new URLSearchParams(location.search).get("lang"),l=q;if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l;var c=document.createElement("link"),a;c.rel="canonical";a=document.querySelector('link[hreflang="'+(q==="it"||q==="en"?q:"x-default")+'"]');if(a){c.href=a.href;document.head.appendChild(c)}}()</script>
+<script src="../assets/site.js?v=8292113b" defer></script>
 </head>
 <body>
 
@@ -500,6 +515,7 @@
         </nav>
       </div>
       <p class="fine"><span class="it">Divano è un lettore: non contiene e non fornisce canali, film, serie o abbonamenti.</span><span class="en">Divano is a player: it does not include or provide any channels, movies, series or subscriptions.</span></p>
+      <p class="by"><span class="it">Un'app di</span><span class="en">An app by</span> <a href="https://dambox.ch/">dambox</a>, Lugano</p>
     </div>
   </footer>
 </main>
