@@ -24,7 +24,7 @@
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="preload" href="../assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=226ebbf9">
+<link rel="stylesheet" href="../assets/site.css?v=fe857396">
 <script>!function(){var d=document.documentElement,q=new URLSearchParams(location.search).get("lang"),l=q;if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l;var c=document.createElement("link"),a;c.rel="canonical";a=document.querySelector('link[hreflang="'+(q==="it"||q==="en"?q:"x-default")+'"]');if(a){c.href=a.href;document.head.appendChild(c)}}()</script>
 <script src="../assets/site.js?v=cee8cc9e" defer></script>
 </head>
@@ -406,7 +406,19 @@
             <li>Il telefono chiede <em>Aggiungere …?</em>: tocca <span class="ui">Aggiungi</span>. La TV dice chi l'ha fatta entrare e inizia a ricevere i dati.</li>
           </ol>
           <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Una TV non ha fotocamera: si collega sempre facendo inquadrare il suo codice da un telefono che sincronizza già. Il codice scade dopo 10 minuti. Se sulla TV compare un collegamento che non hai fatto tu, scegli <span class="ui">Non sono stato io</span>.</p></div>
-          <p>Quando è attiva, la stessa schermata mostra l'ora dell'ultima sincronizzazione, <span class="ui">Sincronizza ora</span> e l'elenco dei <strong>Dispositivi</strong>: <span class="ui">Rimuovi</span> ne scollega uno subito. <span class="ui">Disattiva la sincronizzazione</span> lascia i dati dove sono.</p>
+          <p>Quando è attiva, la stessa schermata mostra l'ora dell'ultima sincronizzazione, <span class="ui">Sincronizza ora</span> e l'elenco dei <strong>Dispositivi</strong>: <span class="ui">Rimuovi</span> ne scollega uno subito. <span class="ui">Disattiva la sincronizzazione</span> lascia i dati dove sono. <span class="ui">Elimina i dati sincronizzati</span> ferma la sincronizzazione su tutti i dispositivi e cancella i dati dal server; quello che c'è su ogni dispositivo resta lì.</p>
+          <h3>Kit di recupero</h3>
+          <p>Se tutti i dispositivi vanno persi o vengono ripristinati, non resta nessuno che possa farne entrare uno nuovo. Il kit di recupero è un codice QR da tenere da parte: riporta indietro i dati della famiglia su un telefono nuovo.</p>
+          <ol class="steps">
+            <li>Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Crea un kit di recupero</span>.</li>
+            <li>Il kit compare una volta sola: <span class="ui">Salva come PDF</span>, <span class="ui">Stampa</span> oppure fotografalo, poi tocca <span class="ui">Fatto</span>.</li>
+            <li>Per rientrare, su un telefono: Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Ripristina con il kit di recupero</span> (su un telefono appena installato ci arrivi da <span class="ui">Sincronizza da un altro dispositivo</span> nella Home vuota). Inquadra il codice, oppure <span class="ui">Apri il file del kit</span> per il PDF o la foto. Poi aggiungi la TV come sempre.</li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Chi ha il kit può entrare e vedere tutto, comprese le password delle sorgenti: custodiscilo come una chiave di casa. Ogni dispositivo mostra quando il kit è stato usato, e <span class="ui">Creane uno nuovo</span> fa smettere di funzionare il vecchio. Con un kit, i dati restano sul server anche quando l'ultimo dispositivo disattiva la sincronizzazione, ma se per un anno nessun dispositivo sincronizza il server li elimina.</p></div>
+          <div class="pair">
+            <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-09-recovery-kit.webp" data-shot="../assets/shots/*/phone-09-recovery-kit.webp" alt="Il kit di recupero appena creato, con il codice QR e i pulsanti Salva come PDF e Stampa"><figcaption>Il kit si vede una volta sola: salvalo o stampalo.</figcaption></figure>
+            <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-10-recovery-restore.webp" data-shot="../assets/shots/*/phone-10-recovery-restore.webp" alt="La schermata Ripristina con il kit di recupero, con la fotocamera e Apri il file del kit"><figcaption>Inquadra il codice o apri il file.</figcaption></figure>
+          </div>
           <h3>Usare un altro server</h3>
           <p>Prima di iniziare puoi cambiare il campo <strong>Server</strong>, su tutti i dispositivi allo stesso modo. Serve un indirizzo <code>https://</code>; <code>http://</code> è accettato solo per un server sulla rete di casa. Se il server accetta solo famiglie invitate, compare <span class="ui">Password del server</span>. Per crearne uno, vedi <a href="../sync/">Server di sincronizzazione</a>.</p>
         </div>
@@ -420,7 +432,19 @@
             <li>The phone asks <em>Add …?</em>: tap <span class="ui">Add</span>. The TV says who let it in and starts receiving your data.</li>
           </ol>
           <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>A TV has no camera: it always joins by having its code scanned by a phone that already syncs. The code expires after 10 minutes. If the TV shows a link you didn't make, choose <span class="ui">That wasn't me</span>.</p></div>
-          <p>Once on, the same screen shows when the last sync happened, <span class="ui">Sync now</span> and the list of <strong>Devices</strong>: <span class="ui">Remove</span> cuts one off right away. <span class="ui">Stop syncing</span> leaves your data where it is.</p>
+          <p>Once on, the same screen shows when the last sync happened, <span class="ui">Sync now</span> and the list of <strong>Devices</strong>: <span class="ui">Remove</span> cuts one off right away. <span class="ui">Stop syncing</span> leaves your data where it is. <span class="ui">Delete synced data</span> stops sync on every device and deletes the data from the server; what's on each device stays there.</p>
+          <h3>Recovery kit</h3>
+          <p>If every device is lost or reset, nothing is left that could let a new one in. The recovery kit is a QR code to keep aside: it brings the household's data back on a new phone.</p>
+          <ol class="steps">
+            <li>Settings › <span class="ui">Sync</span> › <span class="ui">Make a recovery kit</span>.</li>
+            <li>The kit shows only once: <span class="ui">Save as PDF</span>, <span class="ui">Print</span> or take a photo of it, then tap <span class="ui">Done</span>.</li>
+            <li>To get back in, on a phone: Settings › <span class="ui">Sync</span> › <span class="ui">Restore with a recovery kit</span> (on a freshly installed phone, through <span class="ui">Sync from another device</span> on the empty Home). Scan the code, or <span class="ui">Open the kit file</span> for the PDF or the photo. Then add the TV as usual.</li>
+          </ol>
+          <div class="note"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#info"/></svg><p>Whoever has the kit can get in and see everything, source passwords included: keep it like a house key. Every device shows when the kit was used, and <span class="ui">Make a new one</span> stops the old one working. With a kit the data stays on the server even when the last device stops syncing, but if no device syncs for a year the server deletes it.</p></div>
+          <div class="pair">
+            <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-09-recovery-kit.webp" data-shot="../assets/shots/*/phone-09-recovery-kit.webp" alt="A recovery kit just made, with its QR code and the Save as PDF and Print buttons"><figcaption>The kit shows only once: save or print it.</figcaption></figure>
+            <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-10-recovery-restore.webp" data-shot="../assets/shots/*/phone-10-recovery-restore.webp" alt="The Restore with a recovery kit screen, with the camera and Open the kit file"><figcaption>Scan the code or open the file.</figcaption></figure>
+          </div>
           <h3>Using another server</h3>
           <p>Before you start you can change the <strong>Server</strong> field, the same way on every device. It needs an <code>https://</code> address; <code>http://</code> is only accepted for a server on your home network. If the server only takes invited households, <span class="ui">Server password</span> appears. To run one, see <a href="../sync/">Sync server</a>.</p>
         </div>

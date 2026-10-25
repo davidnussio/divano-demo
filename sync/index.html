@@ -24,7 +24,7 @@
 <link rel="icon" href="../assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="preload" href="../assets/nunito.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="../assets/site.css?v=226ebbf9">
+<link rel="stylesheet" href="../assets/site.css?v=fe857396">
 <script>!function(){var d=document.documentElement,q=new URLSearchParams(location.search).get("lang"),l=q;if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l;var c=document.createElement("link"),a;c.rel="canonical";a=document.querySelector('link[hreflang="'+(q==="it"||q==="en"?q:"x-default")+'"]');if(a){c.href=a.href;document.head.appendChild(c)}}()</script>
 <script src="../assets/site.js?v=cee8cc9e" defer></script>
 <script src="api.js?v=e2998d15" defer></script>
@@ -82,6 +82,7 @@
             <li>Il server conserva <strong>record</strong> <code>{id, rev, deleted, blob}</code> per spazio. <code>id</code> è un'impronta calcolata con la chiave e <code>blob</code> è cifrato con AES-256-GCM: il server sa quanti record ci sono, quanto sono grandi (arrotondati) e quando cambiano, non cosa contengono.</li>
             <li><code>rev</code> è un contatore per spazio assegnato dal server. Le scritture sono <em>compare-and-set</em> su <code>rev</code>: l'ordine del server fa fede e l'orologio dei dispositivi non conta.</li>
             <li>Un nuovo dispositivo entra nello spazio con un <strong>abbinamento</strong>: mostra un codice QR, un dispositivo già presente lo inquadra, controlla l'impronta della chiave e gli passa la chiave dello spazio cifrata per lui. Il server la custodisce senza poterla aprire.</li>
+            <li>Se non resta nessun dispositivo, si rientra con il <strong>kit di recupero</strong>: un codice QR, stampato o in PDF, con un segreto che il server non vede. Il server conserva un'impronta di ciò che lo prova e la chiave dello spazio cifrata con una chiave che solo il kit dà.</li>
           </ul>
           <p>Un server malevolo può non rispondere o restituire dati vecchi, ma non può leggere né falsificare i record, né far entrare un suo dispositivo in uno spazio. Il formato dei record e la crittografia riguardano solo l'app: il server deve soltanto conservarli e restituirli in ordine.</p>
         </div>
@@ -92,6 +93,7 @@
             <li>The server stores <strong>records</strong> <code>{id, rev, deleted, blob}</code> per space. <code>id</code> is a keyed hash and <code>blob</code> is encrypted with AES-256-GCM: the server learns how many records there are, how big they are (rounded) and when they change, not what they contain.</li>
             <li><code>rev</code> is a per-space counter assigned by the server. Writes are <em>compare-and-set</em> on <code>rev</code>: the server's order is the truth and no device clock matters.</li>
             <li>A new device joins a space by <strong>pairing</strong>: it shows a QR code, a device already in the space scans it, checks the key fingerprint and hands over the space key encrypted for it. The server holds it without being able to open it.</li>
+            <li>When no device is left, the household gets back in with its <strong>recovery kit</strong>: a QR code, printed or as a PDF, holding a secret the server never sees. The server keeps a hash of what proves it, and the space key encrypted with a key only the kit gives.</li>
           </ul>
           <p>A malicious server can refuse service or hand back stale data, but it cannot read or forge records, nor slip a device of its own into a space. The record format and the cryptography only concern the app: the server just stores records and hands them back in order.</p>
         </div>
@@ -108,8 +110,9 @@
             <li>Dimenticare i record cancellati dopo <code>tombstoneRetentionDays</code> (almeno 30) e ricordare il <code>rev</code> più alto eliminato: un pull con <code>since</code> più vecchio riceve 410 <code>cursor_expired</code>.</li>
             <li>Long-poll: svegliare i pull in attesa quando il contatore dello spazio cambia. Chi non può tenere aperte le richieste annuncia <code>maxWaitSeconds: 0</code> e toglie <code>longpoll</code> da <code>features</code>.</li>
             <li>Far scadere gli abbinamenti dopo 10 minuti; ogni codice si usa una volta sola.</li>
+            <li>Kit di recupero (funzione <code>recovery</code>): conservare l'impronta SHA-256 di <code>auth</code> e <code>wrapped</code> così com'è, uno per spazio, il nuovo al posto del vecchio. Con un kit, revocare l'ultimo dispositivo non elimina lo spazio. <code>POST /v1/recover</code> crea il dispositivo anche oltre <code>maxDevices</code> e risponde 404 allo stesso modo per uno spazio sconosciuto, senza kit o con <code>auth</code> sbagliata.</li>
             <li>Conservare dei token solo l'impronta SHA-256 e non registrare mai i corpi delle richieste né i token.</li>
-            <li>Limitare per IP <code>POST /v1/spaces</code> e <code>POST /v1/pairings</code>.</li>
+            <li>Limitare per IP <code>POST /v1/spaces</code>, <code>POST /v1/pairings</code> e <code>POST /v1/recover</code>.</li>
             <li>Per un server privato, usare <code>registration: secret</code>: chi crea uno spazio deve conoscere la password del server.</li>
           </ul>
         </div>
@@ -123,8 +126,9 @@
             <li>Forget deleted records after <code>tombstoneRetentionDays</code> (at least 30) and remember the highest purged <code>rev</code>: a pull with an older <code>since</code> gets 410 <code>cursor_expired</code>.</li>
             <li>Long-poll: wake waiting pulls when the space's counter moves. A server that can't hold requests open advertises <code>maxWaitSeconds: 0</code> and drops <code>longpoll</code> from <code>features</code>.</li>
             <li>Expire pairings after 10 minutes; each code is single use.</li>
+            <li>Recovery kits (feature <code>recovery</code>): keep a SHA-256 hash of <code>auth</code> and <code>wrapped</code> as sent, one per space, the new one replacing the old. With a kit, revoking the last device doesn't delete the space. <code>POST /v1/recover</code> creates the device even past <code>maxDevices</code> and answers 404 alike for an unknown space, one without a kit or a wrong <code>auth</code>.</li>
             <li>Keep only a SHA-256 hash of tokens and never log request bodies or tokens.</li>
-            <li>Rate-limit <code>POST /v1/spaces</code> and <code>POST /v1/pairings</code> per IP.</li>
+            <li>Rate-limit <code>POST /v1/spaces</code>, <code>POST /v1/pairings</code> and <code>POST /v1/recover</code> per IP.</li>
             <li>For a private server, use <code>registration: secret</code>: whoever creates a space must know the server password.</li>
           </ul>
         </div>
@@ -132,7 +136,7 @@
 <pre><code>{
   "protocols": [1],
   "registration": "open",
-  "features": ["longpoll"],
+  "features": ["longpoll", "recovery"],
   "limits": {
     "maxRecords": 20000, "maxBytes": 33554432, "maxBlobBytes": 16384,
     "maxBatch": 500, "maxDevices": 10, "maxWaitSeconds": 30,

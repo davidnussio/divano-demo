@@ -382,6 +382,7 @@ details.op .sum { color: var(--muted); font-weight: 600; font-size: 15px; }
 .method { font-size: 12px; font-weight: 900; letter-spacing: .05em; padding: 4px 9px; border-radius: 8px; min-width: 62px; text-align: center; }
 .method.get { background: rgba(78, 209, 161, .16); color: var(--ok); }
 .method.post { background: rgba(47, 128, 255, .2); color: var(--primary-pale); }
+.method.put { background: rgba(255, 181, 71, .16); color: var(--accent); }
 .method.delete { background: rgba(255, 107, 122, .16); color: #FF8A96; }
 .method.schema { background: var(--surface-3); color: var(--soft); }
 .op-body { padding: 4px 18px 16px; border-top: 1px solid var(--line); }

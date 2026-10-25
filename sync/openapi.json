@@ -30,6 +30,10 @@
       "description": "Adding a device to a space by scanning its QR code."
     },
     {
+      "name": "recovery",
+      "description": "Getting back into a space when no device of it is left (README, \"Recovery kit\")."
+    },
+    {
       "name": "records",
       "description": "The encrypted change feed."
     }
@@ -125,13 +129,102 @@
         ],
         "operationId": "deleteSpace",
         "summary": "Delete the space, its devices and all its records",
-        "description": "Irreversible. Every device token of the space stops working.",
+        "description": "Irreversible. Every device token of the space stops working, and its recovery kit.",
         "responses": {
           "204": {
             "description": "Deleted"
           },
           "401": {
             "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/space/recovery": {
+      "put": {
+        "tags": [
+          "recovery"
+        ],
+        "operationId": "setRecovery",
+        "summary": "Give the space a recovery kit, replacing the one it had",
+        "description": "The server keeps a hash of `auth` and `wrapped` as they are. The previous kit stops working.\nServers with the `recovery` feature only.\n",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetRecoveryRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Kept"
+          },
+          "400": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "recovery"
+        ],
+        "operationId": "deleteRecovery",
+        "summary": "Remove the space's recovery kit",
+        "description": "The kit stops working. Removing a kit the space doesn't have is not an error.",
+        "responses": {
+          "204": {
+            "description": "Removed"
+          },
+          "401": {
+            "$ref": "#/components/responses/Problem"
+          }
+        }
+      }
+    },
+    "/v1/recover": {
+      "post": {
+        "tags": [
+          "recovery"
+        ],
+        "operationId": "recover",
+        "summary": "A new device gets into a space with its recovery kit",
+        "description": "Unauthenticated: the kit is the proof. Creates a device in the space, even past\n`limits.maxDevices` (the lost devices still hold their places), and records when the kit was\nused. 404 alike for an unknown space, a space without a kit or a wrong `auth`. Servers must\nrate-limit it per IP.\n",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RecoverRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The new device's credentials and the space key, wrapped",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recovered"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "404": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "429": {
+            "$ref": "#/components/responses/RateLimited"
           }
         }
       }
@@ -184,7 +277,7 @@
         ],
         "operationId": "revokeDevice",
         "summary": "Revoke a device (or leave the space, when it is the caller)",
-        "description": "The device's token stops working immediately. Revoking the last device deletes the space.",
+        "description": "The device's token stops working immediately. Revoking the last device deletes the space,\nunless it has a recovery kit.\n",
         "responses": {
           "204": {
             "description": "Revoked"
@@ -601,10 +694,12 @@
           },
           "features": {
             "type": "array",
+            "description": "`longpoll`: pulls can wait for changes. `recovery`: recovery kits.",
             "items": {
               "type": "string",
               "enum": [
-                "longpoll"
+                "longpoll",
+                "recovery"
               ]
             }
           },
@@ -752,6 +847,107 @@
           },
           "limits": {
             "$ref": "#/components/schemas/Limits"
+          },
+          "recovery": {
+            "description": "The space's recovery kit, null when it has none. Servers with the `recovery` feature only.",
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/RecoveryInfo"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        }
+      },
+      "RecoveryInfo": {
+        "type": "object",
+        "required": [
+          "createdAt",
+          "usedAt"
+        ],
+        "properties": {
+          "createdAt": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "usedAt": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64",
+            "description": "The last recovery with this kit; null while it hasn't been used."
+          }
+        }
+      },
+      "RecoveryAuth": {
+        "type": "string",
+        "description": "`HKDF(recoverySecret, \"divano-sync/1 recovery auth\")`, 32 bytes in base64url (README, \"Recovery kit\").",
+        "pattern": "^[A-Za-z0-9_-]{43}$"
+      },
+      "SetRecoveryRequest": {
+        "type": "object",
+        "required": [
+          "auth",
+          "wrapped"
+        ],
+        "properties": {
+          "auth": {
+            "$ref": "#/components/schemas/RecoveryAuth"
+          },
+          "wrapped": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/Base64Url"
+              }
+            ],
+            "description": "The space key, encrypted with a key only the kit gives.",
+            "maxLength": 512
+          }
+        }
+      },
+      "RecoverRequest": {
+        "type": "object",
+        "required": [
+          "spaceId",
+          "auth",
+          "kind"
+        ],
+        "properties": {
+          "spaceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "auth": {
+            "$ref": "#/components/schemas/RecoveryAuth"
+          },
+          "kind": {
+            "$ref": "#/components/schemas/DeviceKind"
+          }
+        }
+      },
+      "Recovered": {
+        "type": "object",
+        "required": [
+          "spaceId",
+          "deviceId",
+          "token",
+          "wrapped"
+        ],
+        "properties": {
+          "spaceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "deviceId": {
+            "$ref": "#/components/schemas/Id"
+          },
+          "token": {
+            "type": "string",
+            "description": "Device token for the Authorization header. Shown only once."
+          },
+          "wrapped": {
+            "$ref": "#/components/schemas/Base64Url"
           }
         }
       },
