@@ -292,6 +292,9 @@ paths:
 
         410 `cursor_expired` means tombstones after `since` were purged: the client must do a full
         sync (no `since`).
+
+        402 `payment_required`, here and on pushRecords, means the space's plan is suspended. The
+        client keeps the space, its data and its pending changes, and asks again later.
       parameters:
         - name: since
           in: query
@@ -307,6 +310,7 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/RecordPage" }
         "401": { $ref: "#/components/responses/Problem" }
+        "402": { $ref: "#/components/responses/Problem" }
         "410": { $ref: "#/components/responses/Problem" }
     post:
       tags: [records]
@@ -333,6 +337,7 @@ paths:
               schema: { $ref: "#/components/schemas/PushResponse" }
         "400": { $ref: "#/components/responses/Problem" }
         "401": { $ref: "#/components/responses/Problem" }
+        "402": { $ref: "#/components/responses/Problem" }
         "413": { $ref: "#/components/responses/Problem" }
         "429": { $ref: "#/components/responses/RateLimited" }
 
@@ -439,6 +444,24 @@ components:
             name: { type: string, maxLength: 80 }
             privacyUrl: { type: string, format: uri }
             contact: { type: string, maxLength: 200 }
+        service:
+          type: object
+          description: |
+            What is about to change on this server for every space, so apps can say it ahead of time
+            (README, "Notices and plans"). Absent while nothing is.
+          properties:
+            notice:
+              type: object
+              required: [kind, at]
+              properties:
+                kind:
+                  type: string
+                  description: |
+                    `subscription`: from `at`, a space syncs only with a plan (`Space.plan`).
+                    `closing`: the server stops on `at`. Apps ignore a kind they don't know.
+                  examples: [subscription, closing]
+                at: { type: integer, format: int64, description: When it happens. }
+                url: { type: string, format: uri, description: A page with the details, for people. }
 
     Limits:
       type: object
@@ -496,6 +519,30 @@ components:
           oneOf:
             - $ref: "#/components/schemas/RecoveryInfo"
             - type: "null"
+        plan:
+          $ref: "#/components/schemas/Plan"
+          description: The space's plan, on servers that charge for sync; absent elsewhere.
+
+    Plan:
+      type: object
+      required: [status]
+      description: One plan covers every device of the space.
+      properties:
+        status:
+          type: string
+          description: |
+            `free`, `grandfathered`, `trial`, `active`: the space syncs. `grace`: it still syncs, the plan
+            has ended and the space is suspended at `until`. `suspended`: pulls and pushes answer 402
+            `payment_required`, and the space is deleted at `until`. Apps treat a status they don't know
+            as one that syncs.
+          examples: [trial, active, grace, suspended]
+        until:
+          type: [integer, "null"]
+          format: int64
+          description: When this status ends; null when it doesn't.
+        source:
+          type: string
+          description: "Where the plan is managed: `play`, `stripe`, `gift`."
 
     RecoveryInfo:
       type: object
@@ -748,3 +795,4 @@ components:
             - cursor_expired
             - rate_limited
             - protocol_unsupported
+            - payment_required      # the space's plan is suspended: pulls and pushes only

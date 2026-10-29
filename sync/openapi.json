@@ -466,7 +466,7 @@
         ],
         "operationId": "pullRecords",
         "summary": "Changes after a cursor, in order",
-        "description": "Returns records whose `rev` is greater than `since`, in ascending `rev` order, at most\n`limit` of them. With no `since` the feed starts from the beginning (full sync).\n\nIf nothing changed and `wait` is set, the server holds the request until a change arrives or\n`wait` seconds pass, then answers with an empty list and the same cursor. Servers without the\n`longpoll` feature answer immediately.\n\n410 `cursor_expired` means tombstones after `since` were purged: the client must do a full\nsync (no `since`).\n",
+        "description": "Returns records whose `rev` is greater than `since`, in ascending `rev` order, at most\n`limit` of them. With no `since` the feed starts from the beginning (full sync).\n\nIf nothing changed and `wait` is set, the server holds the request until a change arrives or\n`wait` seconds pass, then answers with an empty list and the same cursor. Servers without the\n`longpoll` feature answer immediately.\n\n410 `cursor_expired` means tombstones after `since` were purged: the client must do a full\nsync (no `since`).\n\n402 `payment_required`, here and on pushRecords, means the space's plan is suspended. The\nclient keeps the space, its data and its pending changes, and asks again later.\n",
         "parameters": [
           {
             "name": "since",
@@ -501,6 +501,9 @@
             }
           },
           "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "402": {
             "$ref": "#/components/responses/Problem"
           },
           "410": {
@@ -540,6 +543,9 @@
             "$ref": "#/components/responses/Problem"
           },
           "401": {
+            "$ref": "#/components/responses/Problem"
+          },
+          "402": {
             "$ref": "#/components/responses/Problem"
           },
           "413": {
@@ -723,6 +729,40 @@
                 "maxLength": 200
               }
             }
+          },
+          "service": {
+            "type": "object",
+            "description": "What is about to change on this server for every space, so apps can say it ahead of time\n(README, \"Notices and plans\"). Absent while nothing is.\n",
+            "properties": {
+              "notice": {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "at"
+                ],
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "description": "`subscription`: from `at`, a space syncs only with a plan (`Space.plan`).\n`closing`: the server stops on `at`. Apps ignore a kind they don't know.\n",
+                    "examples": [
+                      "subscription",
+                      "closing"
+                    ]
+                  },
+                  "at": {
+                    "type": "integer",
+                    "format": "int64",
+                    "description": "When it happens."
+                  },
+                  "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "A page with the details",
+                    "for people.": null
+                  }
+                }
+              }
+            }
           }
         }
       },
@@ -858,6 +898,41 @@
                 "type": "null"
               }
             ]
+          },
+          "plan": {
+            "$ref": "#/components/schemas/Plan",
+            "description": "The space's plan, on servers that charge for sync; absent elsewhere."
+          }
+        }
+      },
+      "Plan": {
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "description": "One plan covers every device of the space.",
+        "properties": {
+          "status": {
+            "type": "string",
+            "description": "`free`, `grandfathered`, `trial`, `active`: the space syncs. `grace`: it still syncs, the plan\nhas ended and the space is suspended at `until`. `suspended`: pulls and pushes answer 402\n`payment_required`, and the space is deleted at `until`. Apps treat a status they don't know\nas one that syncs.\n",
+            "examples": [
+              "trial",
+              "active",
+              "grace",
+              "suspended"
+            ]
+          },
+          "until": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "format": "int64",
+            "description": "When this status ends; null when it doesn't."
+          },
+          "source": {
+            "type": "string",
+            "description": "Where the plan is managed: `play`, `stripe`, `gift`."
           }
         }
       },
@@ -1347,7 +1422,8 @@
               "batch_too_large",
               "cursor_expired",
               "rate_limited",
-              "protocol_unsupported"
+              "protocol_unsupported",
+              "payment_required"
             ]
           }
         }
