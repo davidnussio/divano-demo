@@ -400,8 +400,8 @@
           <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg></span>Sincronizzazione tra dispositivi</h2>
           <p>Telefono e TV possono condividere profili, sorgenti (con le password), preferiti, lista <em>Da vedere</em>, progressi, elementi nascosti, canali rinominati, blocchi delle categorie e promemoria. Tutto è cifrato sui tuoi dispositivi con una chiave che il server non riceve mai.</p>
           <ol class="steps">
-            <li>Sul telefono: Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Inizia qui</span>.</li>
-            <li>Sulla TV: Impostazioni › <span class="ui">Sincronizzazione</span> › <span class="ui">Collega a un altro dispositivo</span>. La TV mostra un codice QR e aspetta. Su una TV appena installata trovi lo stesso pulsante nella Home vuota: <span class="ui">Sincronizza da un altro dispositivo</span>.</li>
+            <li>Sul telefono: Impostazioni › <span class="ui">Sincronizzazione</span>. Scrivi l'<strong>Indirizzo del server</strong> (vedi <a href="#sync-server">Scegliere il server</a>) e, se te ne hanno data una, la <strong>Chiave del server</strong>. Poi <span class="ui">Inizia qui</span>.</li>
+            <li>Sulla TV: Impostazioni › <span class="ui">Sincronizzazione</span>. Scrivi lo stesso server, oppure inquadra il codice di <span class="ui">Più comodo dal telefono</span> e scrivilo lì. Poi <span class="ui">Collega a un altro dispositivo</span>. La TV mostra un codice QR e aspetta. Su una TV appena installata trovi lo stesso pulsante nella Home vuota: <span class="ui">Sincronizza da un altro dispositivo</span>.</li>
             <li>Sul telefono tocca <span class="ui">Aggiungi dispositivo</span>, consenti la fotocamera e inquadra il codice sulla TV.</li>
             <li>Il telefono chiede <em>Aggiungere …?</em>: tocca <span class="ui">Aggiungi</span>. La TV dice chi l'ha fatta entrare e inizia a ricevere i dati.</li>
           </ol>
@@ -419,15 +419,15 @@
             <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-09-recovery-kit.webp" data-shot="../assets/shots/*/phone-09-recovery-kit.webp" alt="Il kit di recupero appena creato, con il codice QR e i pulsanti Salva come PDF e Stampa"><figcaption>Il kit si vede una volta sola: salvalo o stampalo.</figcaption></figure>
             <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-10-recovery-restore.webp" data-shot="../assets/shots/*/phone-10-recovery-restore.webp" alt="La schermata Ripristina con il kit di recupero, con la fotocamera e Apri il file del kit"><figcaption>Inquadra il codice o apri il file.</figcaption></figure>
           </div>
-          <h3>Usare un altro server</h3>
-          <p>Prima di iniziare puoi cambiare il campo <strong>Server</strong>, su tutti i dispositivi allo stesso modo. Serve un indirizzo <code>https://</code>; <code>http://</code> è accettato solo per un server sulla rete di casa. Se il server accetta solo famiglie invitate, compare <span class="ui">Password del server</span>. Per crearne uno, vedi <a href="../sync/">Server di sincronizzazione</a>.</p>
+          <h3 id="sync-server">Scegliere il server</h3>
+          <p>La sincronizzazione passa da un server che scegli tu, lo stesso su tutti i dispositivi: quello di dambox, <code>sync-divano.dambox.ch</code>, oppure uno tuo. Serve un indirizzo <code>https://</code>; <code>http://</code> è accettato solo per un server sulla rete di casa. La <strong>Chiave del server</strong> serve solo se il server accetta famiglie con una chiave. Per tutti i dettagli, vedi <a href="../sync/">Server di sincronizzazione</a>.</p>
         </div>
         <div class="en" lang="en">
           <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sync"/></svg></span>Sync between devices</h2>
           <p>Phone and TV can share profiles, sources (with their passwords), favorites, the <em>To watch</em> list, progress, hidden items, renamed channels, category locks and reminders. Everything is encrypted on your devices with a key the server never receives.</p>
           <ol class="steps">
-            <li>On the phone: Settings › <span class="ui">Sync</span> › <span class="ui">Start here</span>.</li>
-            <li>On the TV: Settings › <span class="ui">Sync</span> › <span class="ui">Join another device</span>. The TV shows a QR code and waits. On a freshly installed TV the same button is on the empty Home: <span class="ui">Sync from another device</span>.</li>
+            <li>On the phone: Settings › <span class="ui">Sync</span>. Enter the <strong>Server address</strong> (see <a href="#sync-server-en">Choosing the server</a>) and, if you were given one, the <strong>Server key</strong>. Then <span class="ui">Start here</span>.</li>
+            <li>On the TV: Settings › <span class="ui">Sync</span>. Enter the same server, or scan the code under <span class="ui">Easier from your phone</span> and enter it there. Then <span class="ui">Join another device</span>. The TV shows a QR code and waits. On a freshly installed TV the same button is on the empty Home: <span class="ui">Sync from another device</span>.</li>
             <li>On the phone tap <span class="ui">Add a device</span>, allow the camera and scan the code on the TV.</li>
             <li>The phone asks <em>Add …?</em>: tap <span class="ui">Add</span>. The TV says who let it in and starts receiving your data.</li>
           </ol>
@@ -445,8 +445,8 @@
             <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-09-recovery-kit.webp" data-shot="../assets/shots/*/phone-09-recovery-kit.webp" alt="A recovery kit just made, with its QR code and the Save as PDF and Print buttons"><figcaption>The kit shows only once: save or print it.</figcaption></figure>
             <figure class="phone"><img loading="lazy" width="540" height="960" src="../assets/shots/it/phone-10-recovery-restore.webp" data-shot="../assets/shots/*/phone-10-recovery-restore.webp" alt="The Restore with a recovery kit screen, with the camera and Open the kit file"><figcaption>Scan the code or open the file.</figcaption></figure>
           </div>
-          <h3>Using another server</h3>
-          <p>Before you start you can change the <strong>Server</strong> field, the same way on every device. It needs an <code>https://</code> address; <code>http://</code> is only accepted for a server on your home network. If the server only takes invited households, <span class="ui">Server password</span> appears. To run one, see <a href="../sync/">Sync server</a>.</p>
+          <h3 id="sync-server-en">Choosing the server</h3>
+          <p>Sync goes through a server you choose, the same on every device: dambox's, <code>sync-divano.dambox.ch</code>, or one of your own. It needs an <code>https://</code> address; <code>http://</code> is only accepted for a server on your home network. The <strong>Server key</strong> is only needed if the server takes households with a key. For the details, see <a href="../sync/">Sync server</a>.</p>
         </div>
       </section>
 

@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="it" data-title-it="Server di sincronizzazione – Divano" data-title-en="Sync server – Divano" data-description-it="La specifica OpenAPI di Divano Sync, per chi vuole ospitare un proprio server di sincronizzazione cifrato end-to-end." data-description-en="The OpenAPI specification of Divano Sync, for anyone who wants to run their own end-to-end encrypted sync server.">
+<html lang="it" data-title-it="Server di sincronizzazione – Divano" data-title-en="Sync server – Divano" data-description-it="Il server da cui passa la sincronizzazione di Divano: quello di dambox o uno tuo, con la specifica OpenAPI per ospitarlo." data-description-en="The server Divano syncs through: dambox's, or one of your own, with the OpenAPI specification to host it.">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Server di sincronizzazione – Divano</title>
-<meta name="description" content="La specifica OpenAPI di Divano Sync, per chi vuole ospitare un proprio server di sincronizzazione cifrato end-to-end.">
+<meta name="description" content="Il server da cui passa la sincronizzazione di Divano: quello di dambox o uno tuo, con la specifica OpenAPI per ospitarlo.">
 <meta name="theme-color" content="#070B14">
 <link rel="alternate" hreflang="it" href="https://divano.dambox.ch/sync/?lang=it">
 <link rel="alternate" hreflang="en" href="https://divano.dambox.ch/sync/?lang=en">
@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Divano">
 <meta property="og:url" content="https://divano.dambox.ch/sync/">
 <meta property="og:title" content="Server di sincronizzazione – Divano">
-<meta property="og:description" content="La specifica OpenAPI di Divano Sync, per chi vuole ospitare un proprio server di sincronizzazione cifrato end-to-end.">
+<meta property="og:description" content="Il server da cui passa la sincronizzazione di Divano: quello di dambox o uno tuo, con la specifica OpenAPI per ospitarlo.">
 <meta property="og:locale" content="it_IT">
 <meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://divano.dambox.ch/assets/og.jpg">
@@ -52,9 +52,9 @@
   <section class="page-hero">
     <div class="wrap">
       <div class="icon-badge"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#server"/></svg></div>
-      <h1><span class="it">Un server di sincronizzazione tuo</span><span class="en">A sync server of your own</span></h1>
-      <p class="it">Divano sincronizza i dispositivi di casa attraverso una piccola API HTTP, descritta qui in OpenAPI 3.1. Il server conserva solo dati cifrati sui dispositivi: chiunque può ospitarne uno, e l'app ha bisogno solo del suo indirizzo.</p>
-      <p class="en">Divano syncs the devices of a household through a small HTTP API, described here in OpenAPI 3.1. The server only keeps data encrypted on the devices: anyone can host one, and the app only needs its address.</p>
+      <h1><span class="it">Un server per la sincronizzazione</span><span class="en">A server to sync through</span></h1>
+      <p class="it">Telefono e TV si sincronizzano attraverso un server che scegli tu: quello di dambox, pronto da usare, o uno tuo, che parla la piccola API HTTP descritta qui in OpenAPI 3.1. In entrambi i casi il server conserva solo dati cifrati sui dispositivi, e l'app ha bisogno solo del suo indirizzo.</p>
+      <p class="en">Phone and TV sync through a server you choose: dambox's, ready to use, or one of your own that speaks the small HTTP API described here in OpenAPI 3.1. Either way the server only keeps data encrypted on the devices, and the app only needs its address.</p>
       <div class="actions" style="margin-top:28px">
         <a class="btn" href="openapi.yaml" download><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg>openapi.yaml</a>
         <a class="btn ghost" href="openapi.json" download>openapi.json</a>
@@ -66,6 +66,7 @@
     <nav class="toc" aria-label="Indice / Contents">
       <p><span class="it">In questa pagina</span><span class="en">On this page</span></p>
       <ol>
+        <li><a href="#choose"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#server"/></svg><span class="it">Scegliere un server</span><span class="en">Choosing a server</span></a></li>
         <li><a href="#model"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg><span class="it">Come funziona</span><span class="en">How it works</span></a></li>
         <li><a href="#requirements"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check"/></svg><span class="it">Cosa deve fare</span><span class="en">What it must do</span></a></li>
         <li><a href="#connect"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg><span class="it">Collegare l'app</span><span class="en">Connecting the app</span></a></li>
@@ -74,6 +75,23 @@
     </nav>
 
     <div class="prose">
+      <section id="choose">
+        <div class="it" lang="it">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#server"/></svg></span>Scegliere un server</h2>
+          <h3>Il server di dambox</h3>
+          <p>Scrivi <code>sync-divano.dambox.ch</code> come <strong>Indirizzo del server</strong> su ogni dispositivo. Per ora è gratuito e non serve una chiave. Lo gestisce dambox; cosa conserva è nella <a href="../privacy/">privacy</a>. Se un giorno le condizioni cambieranno, l'app lo annuncerà nella pagina <span class="ui">Sincronizzazione</span>, con una data.</p>
+          <h3>Un server tuo</h3>
+          <p>Va bene qualunque server che implementi l'API di questa pagina: vedi <a href="#requirements">Cosa deve fare un server</a> e il <a href="#reference">Riferimento API</a>. Se accetta solo famiglie con una chiave (<code>registration: secret</code>), la chiave è quella da scrivere in <strong>Chiave del server</strong>.</p>
+        </div>
+        <div class="en" lang="en">
+          <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#server"/></svg></span>Choosing a server</h2>
+          <h3>dambox's server</h3>
+          <p>Enter <code>sync-divano.dambox.ch</code> as the <strong>Server address</strong> on every device. For now it's free and needs no key. It's run by dambox; what it keeps is in the <a href="../privacy/">privacy policy</a>. If its terms ever change, the app will say so on the <span class="ui">Sync</span> page, with a date.</p>
+          <h3>A server of your own</h3>
+          <p>Any server that implements the API on this page works: see <a href="#requirements">What a server must do</a> and the <a href="#reference">API reference</a>. If it only takes households with a key (<code>registration: secret</code>), that key goes in <strong>Server key</strong>.</p>
+        </div>
+      </section>
+
       <section id="model">
         <div class="it" lang="it">
           <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg></span>Come funziona</h2>
@@ -113,7 +131,7 @@
             <li>Kit di recupero (funzione <code>recovery</code>): conservare l'impronta SHA-256 di <code>auth</code> e <code>wrapped</code> così com'è, uno per spazio, il nuovo al posto del vecchio. Con un kit, revocare l'ultimo dispositivo non elimina lo spazio. <code>POST /v1/recover</code> crea il dispositivo anche oltre <code>maxDevices</code> e risponde 404 allo stesso modo per uno spazio sconosciuto, senza kit o con <code>auth</code> sbagliata.</li>
             <li>Conservare dei token solo l'impronta SHA-256 e non registrare mai i corpi delle richieste né i token.</li>
             <li>Limitare per IP <code>POST /v1/spaces</code>, <code>POST /v1/pairings</code> e <code>POST /v1/recover</code>.</li>
-            <li>Per un server privato, usare <code>registration: secret</code>: chi crea uno spazio deve conoscere la password del server.</li>
+            <li>Per un server privato, usare <code>registration: secret</code>: chi crea uno spazio deve conoscere la chiave del server.</li>
           </ul>
         </div>
         <div class="en" lang="en">
@@ -129,10 +147,10 @@
             <li>Recovery kits (feature <code>recovery</code>): keep a SHA-256 hash of <code>auth</code> and <code>wrapped</code> as sent, one per space, the new one replacing the old. With a kit, revoking the last device doesn't delete the space. <code>POST /v1/recover</code> creates the device even past <code>maxDevices</code> and answers 404 alike for an unknown space, one without a kit or a wrong <code>auth</code>.</li>
             <li>Keep only a SHA-256 hash of tokens and never log request bodies or tokens.</li>
             <li>Rate-limit <code>POST /v1/spaces</code>, <code>POST /v1/pairings</code> and <code>POST /v1/recover</code> per IP.</li>
-            <li>For a private server, use <code>registration: secret</code>: whoever creates a space must know the server password.</li>
+            <li>For a private server, use <code>registration: secret</code>: whoever creates a space must know the server key.</li>
           </ul>
         </div>
-        <p class="muted small" style="margin-top:18px"><span class="it">Per esempio, il server ufficiale risponde così a</span><span class="en">For example, the official server answers</span> <code>GET https://sync-divano.dambox.ch/discovery</code>:</p>
+        <p class="muted small" style="margin-top:18px"><span class="it">Per esempio, il server di dambox risponde così a</span><span class="en">For example, dambox's server answers</span> <code>GET https://sync-divano.dambox.ch/discovery</code>:</p>
 <pre><code>{
   "protocols": [1],
   "registration": "open",
@@ -154,16 +172,16 @@
         <div class="it" lang="it">
           <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg></span>Collegare l'app</h2>
           <ol class="steps">
-            <li>In Impostazioni › <span class="ui">Sincronizzazione</span>, prima di iniziare, scrivi l'indirizzo del server nel campo <strong>Server</strong>. Senza schema, Divano aggiunge <code>https://</code>; <code>http://</code> è accettato solo per indirizzi della rete di casa (<code>localhost</code>, <code>.local</code>, <code>.lan</code>, <code>.home.arpa</code>, IP privati).</li>
-            <li>Con <code>registration: secret</code> compare <span class="ui">Password del server</span>: è il segreto che hai configurato.</li>
+            <li>In Impostazioni › <span class="ui">Sincronizzazione</span>, prima di iniziare, scrivi l'indirizzo nel campo <strong>Indirizzo del server</strong>. Sulla TV puoi scriverlo dal telefono: inquadra il codice di <span class="ui">Più comodo dal telefono</span> (stessa rete Wi-Fi). Senza schema, Divano aggiunge <code>https://</code>; <code>http://</code> è accettato solo per indirizzi della rete di casa (<code>localhost</code>, <code>.local</code>, <code>.lan</code>, <code>.home.arpa</code>, IP privati).</li>
+            <li>Con <code>registration: secret</code>, scrivi in <strong>Chiave del server</strong> il segreto che hai configurato: serve solo per iniziare, sul primo dispositivo.</li>
             <li>Usa lo stesso server su tutti i dispositivi: durante l'abbinamento l'app controlla che coincida.</li>
           </ol>
         </div>
         <div class="en" lang="en">
           <h2><span class="glyph"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#phone"/></svg></span>Connecting the app</h2>
           <ol class="steps">
-            <li>In Settings › <span class="ui">Sync</span>, before you start, type the server address in the <strong>Server</strong> field. Without a scheme Divano adds <code>https://</code>; <code>http://</code> is only accepted for home network addresses (<code>localhost</code>, <code>.local</code>, <code>.lan</code>, <code>.home.arpa</code>, private IPs).</li>
-            <li>With <code>registration: secret</code>, <span class="ui">Server password</span> appears: it's the secret you configured.</li>
+            <li>In Settings › <span class="ui">Sync</span>, before you start, type the address in the <strong>Server address</strong> field. On a TV you can type it on your phone: scan the code under <span class="ui">Easier from your phone</span> (same Wi-Fi network). Without a scheme Divano adds <code>https://</code>; <code>http://</code> is only accepted for home network addresses (<code>localhost</code>, <code>.local</code>, <code>.lan</code>, <code>.home.arpa</code>, private IPs).</li>
+            <li>With <code>registration: secret</code>, enter the secret you configured in <strong>Server key</strong>: it's only needed to start, on the first device.</li>
             <li>Use the same server on every device: pairing checks that they match.</li>
           </ol>
         </div>
