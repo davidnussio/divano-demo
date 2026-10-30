@@ -15,6 +15,7 @@ Plain HTML, no build step (`.nojekyll`). Every page holds Italian and English: e
 | `guide/` | User guide |
 | `sync/` | Choosing a sync server (dambox's or one's own), then for implementers `openapi.yaml`, `openapi.json` and an API reference drawn by `api.js`. The app links here: keep it free of anything that leads to a payment outside Google Play |
 | `privacy/` | Privacy policy of the app (linked from Google Play) |
+| `privacy/delete/` | How to delete one's data (the Delete data URL in Google Play's Data safety form) |
 | `ffmpeg/` | The LGPL source of the FFmpeg the app ships, and how it was built |
 | `assets/` | Style, script, icons, Nunito (SIL OFL) and screenshots in both languages |
 
