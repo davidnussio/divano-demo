@@ -27,7 +27,7 @@
 <link rel="stylesheet" href="assets/site.css?v=fe857396">
 <script>!function(){var d=document.documentElement,q=new URLSearchParams(location.search).get("lang"),l=q;if(l!=="it"&&l!=="en"){try{l=localStorage.getItem("divano-lang")}catch(e){}}if(l!=="it"&&l!=="en")l=/^it\b/i.test(navigator.language||"")?"it":"en";d.dataset.lang=l;d.lang=l;var c=document.createElement("link"),a;c.rel="canonical";a=document.querySelector('link[hreflang="'+(q==="it"||q==="en"?q:"x-default")+'"]');if(a){c.href=a.href;document.head.appendChild(c)}}()</script>
 <script src="assets/site.js?v=cee8cc9e" defer></script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://divano.dambox.ch/#website", "url": "https://divano.dambox.ch/", "name": "Divano", "inLanguage": ["it", "en"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "SoftwareApplication", "@id": "https://divano.dambox.ch/#app", "name": "Divano", "url": "https://divano.dambox.ch/", "description": "Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Android, Android TV", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}, "screenshot": ["https://divano.dambox.ch/assets/shots/it/tv-01-home.webp", "https://divano.dambox.ch/assets/shots/it/phone-01-home.webp"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "Organization", "@id": "https://dambox.ch/#organization", "name": "dambox Sagl", "url": "https://dambox.ch/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebSite", "@id": "https://divano.dambox.ch/#website", "url": "https://divano.dambox.ch/", "name": "Divano", "inLanguage": ["it", "en"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "SoftwareApplication", "@id": "https://divano.dambox.ch/#app", "name": "Divano", "url": "https://divano.dambox.ch/", "description": "Divano riproduce playlist M3U, account Xtream e guide XMLTV su telefono e Android TV. Gratis, senza account, pubblicità né tracciamento.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Android, Android TV", "installUrl": "https://play.google.com/store/apps/details?id=ch.dambox.divano", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "CHF"}, "screenshot": ["https://divano.dambox.ch/assets/shots/it/tv-01-home.webp", "https://divano.dambox.ch/assets/shots/it/phone-01-home.webp"], "publisher": {"@id": "https://dambox.ch/#organization"}}, {"@type": "Organization", "@id": "https://dambox.ch/#organization", "name": "dambox Sagl", "url": "https://dambox.ch/"}]}</script>
 </head>
 <body>
 
@@ -59,7 +59,7 @@
         <span class="en">The player for your M3U playlists, Xtream accounts and XMLTV guides, on your phone and on Android TV. No account, no ads, no tracking.</span>
       </p>
       <div class="actions">
-        <a class="btn" href="#download"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"/></svg><span class="it">Scarica</span><span class="en">Download</span></a>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=ch.dambox.divano"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"/></svg><span class="it">Scarica da Google Play</span><span class="en">Get it on Google Play</span></a>
         <a class="btn ghost" href="guide/"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#play"/></svg><span class="it">Inizia dalla guida</span><span class="en">Start with the guide</span></a>
         <a class="btn ghost" href="#demo"><span class="it">Prova la demo</span><span class="en">Try the demo</span></a>
       </div>
@@ -145,12 +145,18 @@
     <div class="wrap">
       <div class="feature">
         <div class="text">
-          <span class="badge">APK</span>
+          <span class="badge">Google Play</span>
           <h2 style="margin-top:14px"><span class="it">Scarica Divano</span><span class="en">Download Divano</span></h2>
-          <p class="it muted">Un solo file per telefoni, tablet e Android TV con Android 8 o successivo. Sulla TV aprilo con un'app che scarica file da un link, poi consenti a quell'app di installare app sconosciute.</p>
-          <p class="en muted">One file for phones, tablets and Android TV with Android 8 or later. On a TV, open it with an app that downloads files from a link, then let that app install unknown apps.</p>
+          <p class="it muted">Gratis su Google Play per telefoni, tablet e Android TV con Android 8 o successivo, e gli aggiornamenti arrivano da soli. Sulla TV cerca Divano nel Play Store.</p>
+          <p class="en muted">Free on Google Play for phones, tablets and Android TV with Android 8 or later, and updates arrive by themselves. On a TV, search for Divano in the Play Store.</p>
           <div class="actions">
-            <a class="btn" href="https://github.com/davidnussio/divano-demo/releases/latest/download/divano.apk"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"/></svg><span class="it">Scarica l'APK</span><span class="en">Download the APK</span></a>
+            <a class="btn" href="https://play.google.com/store/apps/details?id=ch.dambox.divano"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"/></svg><span class="it">Scarica da Google Play</span><span class="en">Get it on Google Play</span></a>
+          </div>
+          <h3 style="margin-top:32px"><span class="it">Oppure l'APK</span><span class="en">Or the APK</span></h3>
+          <p class="it muted">Se Google Play non c'è sul tuo dispositivo o nel tuo paese: un solo file per telefoni, tablet e Android TV. Sulla TV aprilo con un'app che scarica file da un link, poi consenti a quell'app di installare app sconosciute.</p>
+          <p class="en muted">If Google Play isn't on your device or in your country: one file for phones, tablets and Android TV. On a TV, open it with an app that downloads files from a link, then let that app install unknown apps.</p>
+          <div class="actions">
+            <a class="btn ghost" href="https://github.com/davidnussio/divano-demo/releases/latest/download/divano.apk"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"/></svg><span class="it">Scarica l'APK</span><span class="en">Download the APK</span></a>
             <a class="btn ghost small" href="https://github.com/davidnussio/divano-demo/releases"><span class="it">Novità e versioni precedenti</span><span class="en">What's new and earlier versions</span></a>
           </div>
           <div class="note warm"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#info"/></svg><p><span class="it">Questo APK non aggiorna l'app installata dal Play Store e non viene aggiornato da essa: per passare dall'una all'altra va prima disinstallata. Gli aggiornamenti non arrivano da soli: le nuove versioni sono qui.</span><span class="en">This APK can't update the app installed from the Play Store, nor be updated by it: switching means uninstalling first. Updates don't arrive by themselves: new versions are here.</span></p></div>
@@ -227,6 +233,7 @@
       <div class="cols">
         <div class="brandline"><svg aria-hidden="true"><use href="assets/icons.svg#sofa"/></svg>Divano</div>
         <nav aria-label="Footer">
+          <a href="https://play.google.com/store/apps/details?id=ch.dambox.divano">Google Play</a>
           <a href="guide/"><span class="it">Guida</span><span class="en">Guide</span></a>
           <a href="sync/"><span class="it">Server di sincronizzazione</span><span class="en">Sync server</span></a>
           <a href="privacy/">Privacy</a>

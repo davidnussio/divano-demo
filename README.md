@@ -11,7 +11,7 @@ Plain HTML, no build step (`.nojekyll`). Every page holds Italian and English: e
 
 | Path | |
 |---|---|
-| `index.html` | Home: screenshots, features, the demo playlist and its credits |
+| `index.html` | Home: screenshots, features, the links to Google Play and the APK, the demo playlist and its credits |
 | `guide/` | User guide |
 | `sync/` | Choosing a sync server (dambox's or one's own), then for implementers `openapi.yaml`, `openapi.json` and an API reference drawn by `api.js`. The app links here: keep it free of anything that leads to a payment outside Google Play |
 | `privacy/` | Privacy policy of the app (linked from Google Play) |
